@@ -1,0 +1,15 @@
+{% extends 'pages/website/jobs-layout.html' %}
+{% block content %}
+    {% include '../../components/jobs/jobs.html' %}
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $('document').ready(function(){
+            $('#jobs-carousel').carousel({
+                interval: 5000,
+                keyboard: true,
+            });
+        })
+    </script>
+{% endblock %}

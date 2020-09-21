@@ -1,0 +1,51 @@
+<div class="bradcam_area breadcam_bg" style="background-image: url('https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ member.banner_image }}.jpg');height:500px;">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-7 col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="bradcam_text">
+                            {% if lang == None or lang == 'en' %}
+                                <h3>{{ member.full_name_en }}</h3>
+                                <p>{{ member.profession_en }}</p>
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                <h3>{{ member.full_name_gr }}</h3>
+                                <p>{{ member.profession_gr }}</p>
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                <h3>{{ member.full_name_ru }}</h3>
+                                <p>{{ member.profession_ru }}</p>
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                <h3>{{ member.full_name_tr }}</h3>
+                                <p>{{ member.profession_tr }}</p>
+                            {% endif %}
+                            <p style="text-transform: lowercase;">{{ member.email }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="expert_doctors_area doctor_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% if lang == None or lang == 'en' %}
+                    {% autoescape on %}{{ member.description_en|safe }}{% endautoescape %}
+                {% endif %}
+                {% if lang == 'gr' %}
+                    {% autoescape on %}{{ member.description_gr|safe }}{% endautoescape %}
+                {% endif %}
+                {% if lang == 'ru' %}
+                    {% autoescape on %}{{ member.description_ru|safe }}{% endautoescape %}
+                {% endif %}
+                {% if lang == 'tr' %}
+                    {% autoescape on %}{{ member.description_tr|safe }}{% endautoescape %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

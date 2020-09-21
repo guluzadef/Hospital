@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include '../../components/admin/basic/css.html' %}
+<body id="page-top">
+    <div id="wrapper">
+        {% include '../../components/admin/basic/sidebar.html' %}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                {% include '../../components/admin/basic/header.html' %}
+                <div class="container-fluid">
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include '../../components/admin/basic/js.html' %}
+</body>
+</html>

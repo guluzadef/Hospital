@@ -1,0 +1,67 @@
+<div class="Emergency_contact">
+    <div class="conatiner-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-xl-6">
+                <div class="single_emergency d-flex align-items-center justify-content-center emergency_bg_1">
+                    <div class="info">
+                        <h3>
+                            {% if lang == None or lang == 'en' %}
+                                Contact
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                საკონტაქტო ინფორმაცია
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                Контактная информация
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                İletişim
+                            {% endif %}
+                        </h3>
+                    </div>
+                    <div class="info_button">
+                        <a href="#" class="boxed-btn3-white">{{ contact_info.phone }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="single_emergency d-flex align-items-center justify-content-center emergency_bg_2">
+                    <div class="info">
+                        <h3>
+                            {% if lang == None or lang == 'en' %}
+                    Online Appointment
+                 {% endif %}
+                 {% if lang == 'gr' %}
+                    ონლაინ ჩაწერა
+                 {% endif %}
+                 {% if lang == 'ru' %}
+                    Онлайн-прием
+                 {% endif %}
+                 {% if lang == 'tr' %}
+                    Online Randevu
+                 {% endif %}
+                        </h3>
+                    </div>
+                    <div class="info_button">
+                        <div class="book_btn d-lg-block">
+                            <a type="button" class="popup-with-form boxed-btn3-white" data-toggle="modal" data-target="#appointment" data-backdrop="false">
+                            {% if lang == None or lang == 'en' %}
+                                        Make an Appointment
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        ჩაეწერეთ ექიმთან
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        Записаться на прием
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        Randevu Al
+                                    {% endif %}
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

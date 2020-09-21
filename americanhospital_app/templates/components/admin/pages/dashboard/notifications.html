@@ -1,0 +1,72 @@
+{% if new_messages_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_messages' %}">
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-envelope"></i> You have <strong>{{ new_messages_count }} new messages.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_result_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_eresults' %}">
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-envelope-open-text"></i> You have <strong>{{ new_result_count }} new E-Results requests.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_thank_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_ethanks' %}">
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-hands-helping"></i> You have <strong>{{ new_thank_count }} new Thanks requests.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_getwell_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_egetwell' %}">
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-hand-holding-heart"></i> You have <strong>{{ new_getwell_count }} new Getwell requests.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_complaint_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_ecomplaint' %}">
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-times-circle"></i> You have <strong>{{ new_complaint_count }} new complaints.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_suggestion_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_esuggestion' %}">
+        <div class="alert alert-primary" role="alert">
+            <i class="fas fa-vote-yea"></i> You have <strong>{{ new_suggestion_count }} new suggestions.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_appointment_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_appointments' %}">
+        <div class="alert alert-primary" role="alert">
+            <i class="fas fa-calendar-check"></i> You have <strong>{{ new_appointment_count }} new appointments.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}
+{% if new_resume_count > 0 %}
+<div class="col-xl-4">
+    <a href="{% url 'admin_resumes' %}">
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-paper-plane"></i> You have <strong>{{ new_resume_count }} new resumes.</strong>
+        </div>
+    </a>
+</div>
+{% endif %}

@@ -1,0 +1,279 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    .search_input {
+        display: flex;
+        justify-content: center;
+    }
+
+    .search {
+        width: 50%;
+        box-sizing: border-box;
+        border: 2px solid #000;
+        border-radius: 4px;
+        font-size: 18px;
+        background-color: #e2e2e2;
+        /* background-image: url(searchicon.png); */
+        /* background-position: 10px 10px; */
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    ::-moz-placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    :-ms-input-placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    ::placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: left;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: end;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
+<div class="slider_area">
+    <div class="slider_active owl-carousel">
+
+{#            <img src="{{ instance.image.url }}" alt="">#}
+            <div class="single_slider d-flex align-items-center"
+                 style="background-image: url('https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text ">
+                                {% if lang == None or lang == 'en' %}
+                                    <h3><span>{{ instance.title_en }}</span></h3>
+                                    <p>{{ instance.text_en }}</p>
+                                    {% if instance.menu.menu_type == 'footer_about' %}
+                                        <a href="{% url 'about' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_en }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'footer_online' %}
+                                        <a href="{% url 'e-services' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_en }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'header' %}
+                                        <a href="https://ahtbilisi.com/{{ instance.menu.link }}"
+                                           class="boxed-btn3">{{ instance.menu.title_en }}</a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    <h3><span>{{ instance.title_gr }}</span></h3>
+                                    <p>{{ instance.text_gr }}</p>
+                                    {% if instance.menu.menu_type == 'footer_about' %}
+                                        <a href="{% url 'about' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_gr }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'footer_online' %}
+                                        <a href="{% url 'e-services' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_gr }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'header' %}
+                                        <a href="https://ahtbilisi.com/{{ instance.menu.link }}"
+                                           class="boxed-btn3">{{ instance.menu.title_gr }}</a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    <h3><span>{{ instance.title_ru }}</span></h3>
+                                    <p>{{ instance.text_ru }}</p>
+                                    {% if instance.menu.menu_type == 'footer_about' %}
+                                        <a href="{% url 'about' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_ru }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'footer_online' %}
+                                        <a href="{% url 'e-services' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_ru }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'header' %}
+                                        <a href="https://ahtbilisi.com/{{ instance.menu.link }}"
+                                           class="boxed-btn3">{{ instance.menu.title_ru }}</a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    <h3><span>{{ instance.title_tr }}</span></h3>
+                                    <p>{{ instance.text_tr }}</p>
+                                    {% if instance.menu.menu_type == 'footer_about' %}
+                                        <a href="{% url 'about' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_tr }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'footer_online' %}
+                                        <a href="{% url 'e-services' instance.menu.link %}"
+                                           class="boxed-btn3">{{ instance.menu.title_tr }}</a>
+                                    {% endif %}
+                                    {% if instance.menu.menu_type == 'header' %}
+                                        <a href="https://ahtbilisi.com/{{ instance.menu.link }}"
+                                           class="boxed-btn3">{{ instance.menu.title_tr }}</a>
+                                    {% endif %}
+                                {% endif %}
+
+                            </div>
+                            <div class="search_input" id="myBtn">
+                                <input type="text" placeholder="Search here..." class="search">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="{% url 'search' %}">
+            <input type="text" name="q" value="{{ request.GET.q }}"
+                   class="form-control" placeholder="Search">
+
+        </form>
+        <div class="our_department_area">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section_title text-center mb-55">
+                            <h3>
+                                {% if lang == None or lang == 'en' %}
+                                    Popular Search
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    სიახლეები
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    Новости
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    Haberler
+                                {% endif %}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for instance in news %}
+                        {% if forloop.counter <= 3 %}
+                            <div class="col-xl-4 col-md-6 col-lg-4">
+                                <div class="single_department">
+                                    <div class="department_thumb">
+                                        <a href="{% url 'news_detail' instance.id instance.title_en %}">
+                                            <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg"
+                                                 width="150" height="250" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="department_content">
+                                        <h3>
+                                            <a href="{% url 'news_detail' instance.id instance.title_en %}">
+                                                {% if lang == None or lang == 'en' %}
+                                                    {{ instance.title_en|truncatechars:50 }}
+                                                {% endif %}
+                                                {% if lang == 'gr' %}
+                                                    {{ instance.title_gr|truncatechars:50 }}
+                                                {% endif %}
+                                                {% if lang == 'ru' %}
+                                                    {{ instance.title_ru|truncatechars:50 }}
+                                                {% endif %}
+                                                {% if lang == 'tr' %}
+                                                    {{ instance.title_tr|truncatechars:50 }}
+                                                {% endif %}
+                                            </a>
+                                        </h3>
+                                        <a href="{% url 'news_detail' instance.id instance.title_en %}"
+                                           class="learn_more">
+                                            {% if lang == None or lang == 'en' %}
+                                                Read More
+                                            {% endif %}
+                                            {% if lang == 'gr' %}
+                                                იხილეთ ვრცლად
+                                            {% endif %}
+                                            {% if lang == 'ru' %}
+                                                Читать Дальше
+                                            {% endif %}
+                                            {% if lang == 'tr' %}
+                                                Daha Fazla
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $('.search_input').click(function () {
+            $('#myModal').css('display', 'block')
+            console.log('click')
+
+        })
+        $(window).click(function (e) {
+            var a = $('#myModal')
+            if (e.target.className === 'modal') {
+                a.css('display', 'none')
+
+            }
+            {#console.log(alert(e.target.className))#}
+            {#$('.modal-content').css('background-color', 'red')#}
+
+
+        })
+
+    });
+
+
+</script>

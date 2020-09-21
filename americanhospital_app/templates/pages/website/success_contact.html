@@ -1,0 +1,40 @@
+{% extends 'pages/website/layout.html' %}
+{% block content %}
+    <style>
+        .icon-success {
+        font-size: 50px;
+            color: #22338a;
+            margin-bottom: 2%;
+        }
+
+        .card {
+            box-shadow: 0 20px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 40%;
+            margin-bottom: 116px;
+            padding: 46px;
+            margin-left: 30%;
+            margin-top: 5%;
+            text-align: center;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+    <div class="succes">
+
+
+        <div class="card">
+            <i class="fas fa-check-double icon-success"></i>
+
+            <div class="container">
+{#                <h4><b>John Doe</b></h4>#}
+                <p>Your message has beeen successfully sent</p>
+                <a href="{% url 'index' %}" class="btn btn-success">Back</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

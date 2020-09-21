@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include '../../components/jobs/css.html' %}
+    <body>
+        {% if request.path != '/jobs/' %}
+            {% include '../../components/basic/header.html' %}
+        {% endif %}
+        {% block content %} {% endblock %}
+        {% include '../../components/basic/footer.html' %}
+        {% include '../../components/e-services/appointment.html' %}
+        {% include '../../components/jobs/js.html' %}
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

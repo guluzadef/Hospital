@@ -1,0 +1,23 @@
+<section class="contact-section">
+    <div class="container">
+        <div class="col-12">
+            <h2 class="contact-title">
+                {% if lang == None or lang == 'en' %}
+                    Share your suggestions by filling out the contact form below.
+                {% endif %}
+                {% if lang == 'gr' %}
+                    გაგვიზიარეთ თქვენი რჩევა მოცემული ფორმის საშუალებით.
+                {% endif %}
+                {% if lang == 'ru' %}
+                    Share your suggestions by filling out the contact form below.
+                {% endif %}
+                {% if lang == 'tr' %}
+                    Share your suggestions by filling out the contact form below.
+                {% endif %}
+            </h2>
+        </div>
+        <div class="col-lg-12">
+            {% include '../contact/contact_form.html' %}
+        </div>
+    </div>
+</section>

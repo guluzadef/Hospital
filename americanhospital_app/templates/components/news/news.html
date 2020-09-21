@@ -1,0 +1,54 @@
+{% load custom_tags %}
+<div class="our_department_area">
+    <div class="container">
+        <input type="text" id="news" class="form-control mb-4" placeholder="Search">
+        <div class="row">
+            {% for instance in news %}
+                <div class="col-xl-4 col-md-6 col-lg-4 news_card">
+                    <div class="single_department">
+                        <div class="department_thumb">
+                            <a href="{% url 'news_detail' instance.id instance.title_en|replace_empty %}">
+                                <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg"
+                                     width="150" height="250" alt="">
+                            </a>
+                        </div>
+                        <div class="department_content">
+                            <h3>
+                                <a class="news_title"
+                                   href="{% url 'news_detail' instance.id instance.title_en|replace_empty %}">
+                                    {% if lang == None or lang == 'en' %}
+                                        {{ instance.title_en|truncatechars:50 }}
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        {{ instance.title_gr|truncatechars:50 }}
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        {{ instance.title_ru|truncatechars:50 }}
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        {{ instance.title_tr|truncatechars:50 }}
+                                    {% endif %}
+                                </a>
+                            </h3>
+                            <a href="{% url 'news_detail' instance.id instance.title_en|replace_empty %}"
+                               class="learn_more">
+                                {% if lang == None or lang == 'en' %}
+                                    Read More
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    იხილეთ ვრცლად
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    Читать Дальше
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    Daha Fazla
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

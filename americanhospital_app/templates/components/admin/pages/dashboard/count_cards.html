@@ -1,0 +1,346 @@
+<div class="col-xl-12">
+    <h3>Staff</h3>
+    <div class="row">
+        <div class="col-xl-6 col-md-6 mb-4">
+            <a href="{% url 'admin_doctors' %}">
+                <div class="card border-left-primary h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Doctors</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ doctor_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-md fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-6 col-md-6 mb-4">
+            <a href="{% url 'admin_members' %}">
+                <div class="card border-left-success h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Managment Team</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ member_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12">
+    <h3>Human Resources</h3>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_job_departments' %}">
+                <div class="card border-left-success h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Job Departments</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ job_department_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_jobs' %}">
+                <div class="card border-left-primary h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jobs</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ job_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_resumes' %}">
+                <div class="card border-left-danger h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Resumes</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ resume_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-paper-plane fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12">
+    <h3>Interface</h3>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_news' %}">
+                <div class="card border-left-danger h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">News</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ news_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_patient_guides' %}">
+                <div class="card border-left-primary h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Patient Guides</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ patient_guide_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_health_guides' %}">
+                <div class="card border-left-info h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Health Guides</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ health_guide_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-heartbeat fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_sliders' %}">
+                <div class="card border-left-warning h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Sliders</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ slider_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-images fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_departments' %}">
+                <div class="card border-left-danger h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Departments</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ department_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="far fa-building fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12">
+    <h3>Contact</h3>
+    <div class="row">
+        <div class="col-xl-4 col-md-6 mb-4">
+            <a href="{% url 'admin_appointments' %}">
+                <div class="card border-left-success h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Appointments</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ appointment_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar-check fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-4 col-md-6 mb-4">
+            <a href="{% url 'admin_doctor_questions' %}">
+                <div class="card border-left-primary h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Ask to Doctor</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ doctor_question_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-question-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-4 col-md-6 mb-4">
+            <a href="{% url 'admin_messages' %}">
+                <div class="card border-left-info h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Messages</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ message_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12">
+    <h3>Online Services</h3>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_eresults' %}">
+                <div class="card border-left-info h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">E-Result</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ result_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-envelope-open-text fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_ethanks' %}">
+                <div class="card border-left-warning h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">E-Thanks</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ thank_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-hands-helping fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_egetwell' %}">
+                <div class="card border-left-success h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">E-Get well soon</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ getwell_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-hand-holding-heart fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_ecomplaint' %}">
+                <div class="card border-left-danger h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">E-Compliant</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ complaint_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-times-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'admin_esuggestion' %}">
+                <div class="card border-left-primary h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">E-Suggestion</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ suggestion_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-vote-yea fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

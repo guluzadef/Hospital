@@ -1,0 +1,117 @@
+{% include '../../basic/page_title.html' %}
+{% load static %}
+<div class="card mb-4">
+    <div class="card-body">
+        {% include '../../basic/alert.html' %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Banner Image</label>
+                <input type="file" name="banner_image" class="form-control" required>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Full Name <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <input type="text" name="full_name_en" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Full Name <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <input type="text" name="full_name_gr" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Full Name <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <input type="text" name="full_name_ru" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Full Name <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <input type="text" name="full_name_tr" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Profession <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <input type="text" name="profession_en" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Profession <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <input type="text" name="profession_gr" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Profession <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <input type="text" name="profession_ru" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Profession <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <input type="text" name="profession_tr" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_en" name="description_en"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_gr" name="description_gr"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_ru" name="description_ru"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_tr" name="description_tr"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

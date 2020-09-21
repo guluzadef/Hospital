@@ -1,0 +1,133 @@
+{% include '../../basic/page_title.html' %}
+{% load static %}
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="{% url 'admin_edit_job' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ job_info.id }}">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Job Department</label>
+                    <select class="form-control" name="job_department">
+                        <option value="{{ job_info.job_department.id }}">{{ job_info.job_department.title_en }}</option>
+                        {% for instance in job_departments %}
+                            {% if instance.id != job_info.job_department.id %}
+                                <option value="{{ instance.id }}">{{ instance.title_en }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <input type="text" name="title_en" class="form-control" value="{{ job_info.title_en }}" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <input type="text" name="title_gr" class="form-control" value="{{ job_info.title_gr }}" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <input type="text" name="title_ru" class="form-control" value="{{ job_info.title_ru }}" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <input type="text" name="title_tr" class="form-control" value="{{ job_info.title_tr }}" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Short Description <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_en1" name="short_description_en">{% autoescape on %}{{ job_info.short_description_en|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Short Description <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_gr1" name="short_description_gr">{% autoescape on %}{{ job_info.short_description_gr|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Short Description <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_ru1" name="short_description_ru">{% autoescape on %}{{ job_info.short_description_ru|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Short Description <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_tr1" name="short_description_tr">{% autoescape on %}{{ job_info.short_description_tr|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_en" name="description_en">{% autoescape on %}{{ job_info.description_en|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_gr" name="description_gr">{% autoescape on %}{{ job_info.description_gr|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_ru" name="description_ru">{% autoescape on %}{{ job_info.description_ru|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <div class="summernote-outerwrapper">
+                            <div class="summernote-wrapper first-summernote">
+                                <textarea id="text_tr" name="description_tr">{% autoescape on %}{{ job_info.description_tr|safe }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

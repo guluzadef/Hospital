@@ -1,0 +1,165 @@
+<section class="contact-section">
+    <div class="container">
+        <div class="col-12">
+            <h2 class="contact-title">
+                {% if lang == None or lang == 'en' %}
+                            Ask to Doctor
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            დაუსვით შეკითხვა ექიმს
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Ask to Doctor
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Ask to Doctor
+                        {% endif %}
+            </h2>
+        </div>
+        <div class="col-lg-12">
+            <form class="form-contact contact_form" action="{% url 'ask_to_doctor' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Full Name
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            სახელი და გვარი
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Full Name
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Full Name
+                        {% endif %}
+                        <span class="mandatory">*</span>
+                    </label>
+                    <input class="form-control valid" name="full_name" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Email
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            ელ. ფოსტა
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Email
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Email
+                        {% endif %}
+                        <span class="mandatory">*</span>
+                    </label>
+                    <input class="form-control valid" name="email" type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Phone
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            საკონტაქტო ნომერი
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Телефон
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Telefon
+                        {% endif %}
+                    </label>
+                    <input class="form-control valid" name="phone" type="number">
+                </div>
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Doctor
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            ექიმი
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Доктор
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Doktor
+                        {% endif %}
+                        <span class="mandatory">*</span>
+                    </label>
+                    <select class="form-control valid" name="doctor" required>
+                            <option value="" data-display="Doctor">
+                                {% if lang == None or lang == 'en' %}
+                            Doctor
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            ექიმი
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Доктор
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Doktor
+                        {% endif %}
+                            </option>
+                            {% for instance in doctors %}
+                            <option value="{{ instance.id }}">
+                                {% if lang == None or lang == 'en' %}
+                                    {{ instance.full_name_en }} - {{ instance.profession_en }}
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    {{ instance.full_name_gr }} - {{ instance.profession_gr }}
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    {{ instance.full_name_ru }} - {{ instance.profession_ru }}
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    {{ instance.full_name_tr }} - {{ instance.profession_tr }}
+                                {% endif %}
+                            </option>
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>File *</label>
+                    <input type="file" name="file" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Question
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            შეკითხვა
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Вопрос
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Soru
+                        {% endif %}
+                        <span class="mandatory">*</span>
+                    </label>
+                    <textarea class="form-control w-100" name="text" cols="30" rows="9" required></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="button button-contactForm boxed-btn">
+                        {% if lang == None or lang == 'en' %}
+                            Send
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            გაგზავნა
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Send
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Gönder
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

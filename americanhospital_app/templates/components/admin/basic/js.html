@@ -1,0 +1,12 @@
+{% load static %}
+<script src="{% static 'admin/js/jquery.min.js' %}"></script>
+<script src="{% static 'admin/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'admin/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'admin/js/sb-admin-2.min.js' %}"></script>
+{% if request.path != '/admin_login/' or request.path != '/admin_dashboard/' %}
+<script src="{% static 'admin/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'admin/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'admin/js/datatables-demo.js' %}"></script>
+<script src="{% static 'admin/js/summernote-bs4.min.js' %}"></script>
+<script src="{% static 'admin/js/summernote-demo.js' %}"></script>
+{% endif %}

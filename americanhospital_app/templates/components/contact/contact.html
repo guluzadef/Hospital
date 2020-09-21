@@ -1,0 +1,61 @@
+<section class="contact-section">
+    <div class="container">
+        <div class="d-none d-sm-block mb-5 pb-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.505709762368!2d44.79008731588206!3d41.7096051792359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7eb3a442d%3A0x58b4a03304ee4496!2sAmerican%20Hospital%20Tbilisi!5e0!3m2!1sen!2s!4v1576080158201!5m2!1sen!2s" width="1100" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">
+                    {% if lang == None or lang == 'en' %}
+                            Get in Touch
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            დაგვიკავშირდით
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Get in Touch
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Get in Touch
+                        {% endif %}
+                </h2>
+            </div>
+            <div class="col-lg-8" style="background-color: #f8f9fa">
+                {% include '../contact/contact_form.html' %}
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-home"></i></span>
+                    <div class="media-body">
+                        <h3>
+                                {% if lang == None or lang == 'en' %}
+                                    {{ contact_info.address_en }}
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    {{ contact_info.address_gr }}
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    {{ contact_info.address_ru }}
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    {{ contact_info.address_tr }}
+                                {% endif %}
+                                </h3>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                    <div class="media-body">
+                        <h3><a href="tel:{{ contact_info.phone }}">{{ contact_info.phone }}</a></h3>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-email"></i></span>
+                    <div class="media-body">
+                        <h3><a href="mailto:{{ contact_info.email }}" target="_top">{{ contact_info.email }}</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

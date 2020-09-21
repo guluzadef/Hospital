@@ -1,0 +1,37 @@
+<div class="expert_doctors_area doctor_page">
+    <div class="container">
+        <div class="row">
+            {% for instance in members %}
+            <div class="col-md-6 col-lg-3">
+                <div class="single_expert mb-40">
+                    <div class="expert_thumb">
+                        <a href="{% url 'member_info' instance.id %}">
+                            <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg" alt="">
+                        </a>
+                    </div>
+                    <a href="{% url 'member_info' instance.id %}">
+                        <div class="experts_name text-center">
+                            {% if lang == None or lang == 'en' %}
+                                <h3>{{ instance.full_name_en }}</h3>
+                                <span>{{ instance.profession_en }}</span>
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                <h3>{{ instance.full_name_gr }}</h3>
+                                <span>{{ instance.profession_gr }}</span>
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                <h3>{{ instance.full_name_ru }}</h3>
+                                <span>{{ instance.profession_ru }}</span>
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                <h3>{{ instance.full_name_tr }}</h3>
+                                <span>{{ instance.profession_tr }}</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{% load custom_tags %}
+<div class="our_department_area">
+    <div class="container">
+        <div class="row">
+            {% for instance in patient_guides %}
+            <div class="col-xl-4 col-md-6 col-lg-4 mb-4">
+                <a href="{% url 'patient_guide' instance.id instance.title_en|replace_empty %}">
+                    <div class="card patient_guide_card">
+                        <div class="card-body text-center">
+                            <h3 class="p-5">
+                                {% if lang == None or lang == 'en' %}
+                                    {{ instance.title_en }}
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    {{ instance.title_gr }}
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    {{ instance.title_ru }}
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    {{ instance.title_tr }}
+                                {% endif %}
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

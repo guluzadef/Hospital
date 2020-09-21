@@ -1,0 +1,112 @@
+{% load custom_tags %}
+{% load thumbnail %}
+
+<div class="slider_area">
+
+    <div class="slider_active owl-carousel">
+
+        {#            <img src="{{ instance.image.url }}" alt="">#}
+        {% for instance in image_page %}
+            <div class="single_slider d-flex align-items-center"
+                 style="background-image: url('https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text ">
+                                {% if lang == None or lang == 'en' %}
+                                    <h3><span>{{ instance.page.title_en }}</span></h3>
+                                    <p>{{ instance.page.desc_en }} </p>
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    <h3><span>{{ instance.page.title_gr }}</span></h3>
+                                    <p>{{ instance.page.desc_gr }}</p>
+
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    <h3><span>{{ instance.page.title_ru }}</span></h3>
+                                    <p>{{ instance.page.desc_ru }}</p>
+
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    <h3><span>{{ instance.page.title_tr }}</span></h3>
+                                    <p>{{ instance.page.desc_tr }}</p>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="expert_doctors_area doctor_page">
+    <div class="container" style="display: flex;padding: 0">
+        <div class="sel">
+            <form method="post" action="{% url 'doctors' %}">
+                {% csrf_token %}
+                <label for="departments" style="font-size: 16px">Choose a Department:</label>
+
+                <select name="departments" id="departments" class="form-control">
+                    {% for i in department %}
+                        <option value="{{ i }}">{{ i }}</option>
+
+                    {% endfor %}
+                    {#                            <option value="salam">salam</option>#}
+
+                </select>
+                <input class="btn btn-success" type="submit" value="Submit" style="margin-top: 11px;">
+                <a href="{% url 'doctors' %}" style="margin-top: 11px;" class="form-control">Show All</a>
+
+            </form>
+        </div>
+        <div class="row" style="margin-left: 0">
+
+            {% for instance in doctors %}
+                <div class="col-md-7  col-lg-3 expert_info">
+                    <div class="single_expert mb-40" id="doctorList">
+                        <div class="expert_thumb">
+                            <a href="{% url 'doctor_info' instance.id instance.full_name_en|replace_empty %}">
+
+                                <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg"
+                                     alt="" style="width: 255px;height: 255px">
+                            </a>
+                        </div>
+                        <div class="experts_name text-center">
+                            <a class="doctor_name_department"
+                               href="{% url 'doctor_info' instance.id instance.full_name_en|replace_empty %}">
+                                {% if lang == None or lang == 'en' %}
+                                    <h3>{{ instance.full_name_en }}</h3>
+                                    <span>{{ instance.profession_en }}</span>
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    <h3>{{ instance.full_name_gr }}</h3>
+                                    <span>{{ instance.profession_gr }}</span>
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    <h3>{{ instance.full_name_ru }}</h3>
+                                    <span>{{ instance.profession_ru }}</span>
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    <h3>{{ instance.full_name_tr }}</h3>
+                                    <span>{{ instance.profession_tr }}</span>
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+<style>
+    .experts_name h3 {
+        font-size: 16px !important;
+    }
+</style>

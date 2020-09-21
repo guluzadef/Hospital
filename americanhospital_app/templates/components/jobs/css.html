@@ -1,0 +1,33 @@
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    {% if request.path|slice:"12" == "/news_detail" %}
+    <meta name="keywords" content="{{ news_detail.keywords }}" />
+    {% else %}
+    <meta name="keywords" content="{{ title }}, ahtbilisi.com" />
+    {% endif %}
+    <meta name="description" content="American Hospital Tbilisi" />
+    <meta name="title" content="{{ title }}" />
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:image" content="{{ image }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="American Hospital Tbilisi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'website/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/magnific-popup.min.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'website/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/nice-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/flaticon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/gijgo.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/slicknav.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/pace.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/select2.min.css' %}">
+</head>

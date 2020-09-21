@@ -1,0 +1,85 @@
+{% load custom_tags %}
+<section class="blog_area single-post-area section-padding">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    <div class="feature-img">
+                        <img class="img-fluid"
+                             src="https://res.cloudinary.com/dvljbh7jn/image/upload/c_scale,w_750,h_375/v1575654181/{{ news_detail.image }}.jpg"
+                             style="height: 450px;" alt="">
+                    </div>
+                    <div class="blog_details">
+
+                        <div class="addthis_inline_share_toolbox"></div>
+                        <h2 class="mt-2">
+                            {% if lang == None or lang == 'en' %}
+                                {{ news_detail.title_en }}
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                {{ news_detail.title_gr }}
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                {{ news_detail.title_ru }}
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                {{ news_detail.title_tr }}
+                            {% endif %}
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="fa fa-calendar"></i> {{ news_detail.created_at }}</li>
+                        </ul>
+                        {% if lang == None or lang == 'en' %}
+                            {% autoescape on %}{{ news_detail.description_en|safe }}{% endautoescape %}
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            {% autoescape on %} {{ news_detail.description_gr|safe }}{% endautoescape %}
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            {% autoescape on %}{{ news_detail.description_ru|safe }}{% endautoescape %}
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            {% autoescape on %}{{ news_detail.description_tr|safe }}{% endautoescape %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget popular_post_widget">
+
+
+                        <h3 class="widget_title">Recent Post</h3> {% for instance in news %}
+                        <div class="media post_item">
+                            <a href="{% url 'medical_detail' instance.id instance.title_en|replace_empty %}">
+                                <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/c_scale,w_80,h_80/v1575654181/{{ instance.image }}.jpg"
+                                     alt="post">
+                            </a>
+                            <div class="media-body">
+                                <a href="{% url 'medical_detail' instance.id instance.title_en|replace_empty %}">
+                                    <h3>
+                                        {% if lang == None or lang == 'en' %}
+                                            {{ instance.title_en }}
+                                        {% endif %}
+                                        {% if lang == 'gr' %}
+                                            {{ instance.title_gr }}
+                                        {% endif %}
+                                        {% if lang == 'ru' %}
+                                            {{ instance.title_ru }}
+                                        {% endif %}
+                                        {% if lang == 'tr' %}
+                                            {{ instance.title_tr }}
+                                        {% endif %}
+                                    </h3>
+                                </a>
+                                <p>{{ instance.created_at }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

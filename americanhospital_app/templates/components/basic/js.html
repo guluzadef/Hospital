@@ -1,0 +1,42 @@
+{% load static %}
+<script src="{% static 'website/js/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'website/js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'website/js/popper.min.js' %}"></script>
+<script src="{% static 'website/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'website/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'website/js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'website/js/waypoints.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'website/js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'website/js/scrollIt.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'website/js/wow.min.js' %}"></script>
+<script src="{% static 'website/js/nice-select.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'website/js/plugins.min.js' %}"></script>
+<script src="{% static 'website/js/gijgo.min.js' %}"></script>
+<script src="{% static 'website/js/main.js' %}"></script>
+<script src="{% static 'website/js/datepicker-demo.js' %}"></script>
+<script src="{% static 'website/js/pace.min.js' %}"></script>
+{% if request.path == '/departments/' %}
+<script src="{% static 'website/js/filter-department.js' %}"></script>
+{% endif %}
+{% if request.path == '/doctors/' %}
+<script src="{% static 'website/js/filter-doctor.js' %}"></script>
+{% endif %}
+{% if request.path == '/news/' or request.path == '/health_guides/' %}
+<script src="{% static 'website/js/filter-news.js' %}"></script>
+{% endif %}
+{% if request.path == '/jobs/' %}
+<script src="{% static 'website/js/filter-job.js' %}"></script>
+{% endif %}
+<script src="{% static 'website/js/select2.min.js' %}"></script>
+<script src="{% static 'website/js/select2-demo.js' %}"></script>
+<script src="{% static 'website/js/filter-education.js' %}"></script>
+<script>
+    $(function () {
+        $("#appointment").appendTo("body");
+    });
+</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dfb695ee93c92e5"></script>

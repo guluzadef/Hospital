@@ -1,0 +1,30 @@
+{% include '../../basic/page_title.html' %}
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>To whom</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in getwell %}
+                    <tr>
+                        <td>{{ instance.full_name }}</td>
+                        <td>{{ instance.to_whom }}</td>
+                        <td>{{ instance.text }}</td>
+                        <td>{{ instance.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

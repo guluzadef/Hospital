@@ -1,0 +1,111 @@
+<div class="bradcam_area breadcam_bg"
+     style="background-image: url('https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ doctor.banner_image }}.jpg');height:500px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card" style="background-color: #8c8c8ccc !important;">
+                    <div class="card-body">
+                        <div class="bradcam_text">
+                            {% if lang == None or lang == 'en' %}
+                                <h3 style="color: white;">{{ doctor.full_name_en }}</h3>
+                                <p style="color: #9a1414 !important;">{{ doctor.profession_en }}</p>
+                                <a href="" onclick="return false;"><p>{{ doctor.email }}</p></a>
+                                <p><span style="color: black;">Work Experience: </span> {{ doctor.work_experience }}</p>
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                <h3>{{ doctor.full_name_gr }}</h3>
+                                <p>{{ doctor.profession_gr }}</p>
+                                <a href="" onclick="return false;"><p> {{ doctor.email }}</p></a>
+                                <p><span style="color: black;">Work Experience: </span> {{ doctor.work_experience }}</p>
+
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                <h3>{{ doctor.full_name_ru }}</h3>
+                                <p>{{ doctor.profession_ru }}</p>
+                                <a href="" onclick="return false;"><p> {{ doctor.email }}</p></a>
+                                <p><span style="color: black;">Work Experience: </span> {{ doctor.work_experience }}</p>
+
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                <h3>{{ doctor.full_name_tr }}</h3>
+                                <p>{{ doctor.profession_tr }}</p>
+                                <a href="" onclick="return false;"><p> {{ doctor.email }}</p></a>
+                                <p><span style="color: black;">Work Experience: </span> {{ doctor.work_experience }}</p>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="expert_doctors_area doctor_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if lang == None or lang == 'en' %}
+                    {% autoescape on %}{{ doctor.description_en|safe }}{% endautoescape %}
+                {% endif %}
+                {% if lang == 'gr' %}
+                    {% autoescape on %}{{ doctor.description_gr|safe }}{% endautoescape %}
+                {% endif %}
+                {% if lang == 'ru' %}
+                    {% autoescape on %}{{ doctor.description_ru|safe }}{% endautoescape %}
+                {% endif %}
+                {% if lang == 'tr' %}
+                    {% autoescape on %}{{ doctor.description_tr|safe }}{% endautoescape %}
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center appointment_card">Online Appointment</div>
+                    <div class="card-body">
+                        <form action="{% url 'appointment' %}" method="POST">
+                            <input type="hidden" name="doctor" value="{{ doctor.id }}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input id="datepicker" name="date" class="form-control" placeholder="Pick date"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="phone" class="form-control" placeholder="Phone no." required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger btn-block">Confirm</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bradcam_text:after {
+        padding: 0 0.2rem;
+    {#color: #22338a;#} !important;
+    }
+
+    .bradcam_text a {
+        color: #22338a;
+    !important;
+    }
+
+    .bradcam_text :hover {
+        text-decoration: none;
+    !important;
+        color: #ff373761 !important;
+    {#text-decoration-color: red; !important;#}
+
+
+    }
+</style>

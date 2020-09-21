@@ -1,0 +1,77 @@
+{% load static %}
+<div class="service_area">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-xl-6 col-md-6 text-center">
+                <div class="single_service">
+                    <div class="icon">
+                        <img src="{% static 'website/img/patient.svg' %}" height="70" width="70">
+                    </div>
+                    <h3>
+                        {% if lang == None or lang == 'en' %}
+                            Patient Guide
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            გზამკვლევი პაციენტისთვის
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Руководство для пациентов
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Hasta Rehberi
+                        {% endif %}
+                    </h3>
+                    <a href="{% url 'patient_guides' %}" class="boxed-btn3-white">
+                        {% if lang == None or lang == 'en' %}
+                            Learn More
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            იხილეთ ვრცლად
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Узнать подробнее
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Daha Fazla
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-6 text-center">
+                <div class="single_service">
+                    <div class="icon">
+                        <img src="{% static 'website/img/health.svg' %}" height="70" width="70">
+                    </div>
+                    <h3>
+                        {% if lang == None or lang == 'en' %}
+                            Health Guide
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            გზამკვლევი თქვენი ჯანმრთელობისთვის
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Руководство к вашему здоровью
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Sağlık Rehberi
+                        {% endif %}
+                    </h3>
+                    <a href="{% url 'health_guides' %}" class="boxed-btn3-white health_guide_btn">
+                        {% if lang == None or lang == 'en' %}
+                            Learn More
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            იხილეთ ვრცლად
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Узнать подробнее
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Daha Fazla
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

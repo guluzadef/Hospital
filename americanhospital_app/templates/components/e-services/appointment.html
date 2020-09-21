@@ -1,0 +1,174 @@
+<div class="modal" id="appointment">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title">
+                    {% if lang == None or lang == 'en' %}
+                        Online Appointment
+                     {% endif %}
+                     {% if lang == 'gr' %}
+                        ონლაინ ჩაწერა
+                     {% endif %}
+                     {% if lang == 'ru' %}
+                        Онлайн-прием
+                     {% endif %}
+                     {% if lang == 'tr' %}
+                        Online Randevu
+                     {% endif %}
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center;">
+                {% if lang == None or lang == 'en' %}
+                    Please fill out the form below for an appointment. Our call center will contact you as soon as possible.
+                {% endif %}
+                {% if lang == 'gr' %}
+                    ექიმთან ვიზიტის ჩასანიშნად შეავსეთ მონაცემები. ჩვენ მალევე დაგიკავშირდებით.
+                {% endif %}
+                {% if lang == 'ru' %}
+                    Пожалуйста, заполните форму для визита к врачу. Мы скоро созвонимся с вами.
+                {% endif %}
+                {% if lang == 'tr' %}
+                    Randevu almak için lütfen aşağıdaki formu doldurun. Çağrı merkezimiz en kısa sürede sizinle iletişime geçecektir.
+                {% endif %}
+                </p>
+                <form action="{% url 'appointment' %}" method="POST">
+                {% csrf_token %}
+                    <div class="form-group">
+                            <label>
+                                {% if lang == None or lang == 'en' %}
+                                    Pick Date
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    აირჩიეთ თარიღი
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    Выберите дату
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    Alış Tarihi
+                                {% endif %}
+                            </label>
+                            <input id="datepicker" name="date" required>
+                        </div>
+                    <div class="form-group">
+                            <label>
+                                {% if lang == None or lang == 'en' %}
+                                    Doctors
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    ექიმები
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    Врачи
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    Doktorlar
+                                {% endif %}
+                            </label>
+                            <select class="form-control valid mb-3" name="doctor" required>
+                                <option value="" data-display="Doctors">
+                                    {% if lang == None or lang == 'en' %}
+                                        Doctors
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        ექიმები
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        Врачи
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        Doktorlar
+                                    {% endif %}
+                                </option>
+                                {% for instance in doctors %}
+                                <option value="{{ instance.id }}">
+                                    {% if lang == None or lang == 'en' %}
+                                        {{ instance.full_name_en }} - {{ instance.profession_en }}
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        {{ instance.full_name_gr }} - {{ instance.profession_gr }}
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        {{ instance.full_name_ru }} - {{ instance.profession_ru }}
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        {{ instance.full_name_tr }} - {{ instance.profession_tr }}
+                                    {% endif %}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    <div class="form-group">
+                                <label>
+                                    {% if lang == None or lang == 'en' %}
+                                        Full Name
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        სახელი და გვარი
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        Имя и фамилия
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        Ad-Soyad
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="full_name" class="form-control" required>
+                            </div>
+                    <div class="form-group">
+                            <label>
+                                    {% if lang == None or lang == 'en' %}
+                                        Phone Number
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        საკონტაქტო ნომერი
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        Контактный номер
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        Telefon numarası
+                                    {% endif %}
+                                </label>
+                            <input type="number" name="phone" class="form-control" required>
+                        </div>
+                    <div class="form-group">
+                            <label>
+                                    {% if lang == None or lang == 'en' %}
+                                        Email
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        ელ. ფოსტა
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        Электронная почта
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        Email
+                                    {% endif %}
+                                </label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                    <div class="form-group">
+                        <button type="submit" class="boxed-btn3">
+                            {% if lang == None or lang == 'en' %}
+                                        Confirm
+                                    {% endif %}
+                                    {% if lang == 'gr' %}
+                                        დადასტურება
+                                    {% endif %}
+                                    {% if lang == 'ru' %}
+                                        Подтверждение
+                                    {% endif %}
+                                    {% if lang == 'tr' %}
+                                        Onayla
+                                    {% endif %}
+                        </button>
+                    </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

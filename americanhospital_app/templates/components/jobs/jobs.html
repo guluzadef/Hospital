@@ -1,0 +1,47 @@
+{% load custom_tags %}
+
+{% include './jobs-slider.html' %}
+<section class="contact-section">
+    <div class="container">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="open-positions-label">Open Positions</label>
+                <select class="form-control" id="job_department">
+                    <option disabled>-- Departments --</option>
+                    <option value="">Any</option>
+                    {% for instance in job_departments %}
+                    <option value="{{ instance.id }}">
+                        {% if lang == None or lang == 'en' %} {{ instance.title_en }} {% endif %}
+                        {% if lang == 'gr' %} {{ instance.title_gr }} {% endif %}
+                        {% if lang == 'ru' %} {{ instance.title_ru }} {% endif %}
+                        {% if lang == 'tr' %} {{ instance.title_tr }} {% endif %}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <hr>
+            <ul class="list-group" id="jobList">
+                {% for instance in jobs %}
+                    <li class="list-group-item content department-{{ instance.job_department.id }}" data-response="op{{ instance.job_department.id }}">
+                        <div class="row">
+                           <div class="col-md-11">
+                            <a href="{% url 'job_info' instance.id instance.title_en|replace_empty %}" target="_blank">
+                                {% if lang == None or lang == 'en' %}
+                                    {{ instance.title_en }}
+                                    {% autoescape on %}{{ instance.short_description_en|safe }}{% endautoescape %}
+                                {% endif %}
+                                {% if lang == 'gr' %} {{ instance.title_gr }} {% autoescape on %}{{ instance.short_description_gr|safe }}{% endautoescape %} {% endif %}
+                                {% if lang == 'ru' %} {{ instance.title_ru }} {% autoescape on %}{{ instance.short_description_ru|safe }}{% endautoescape %} {% endif %}
+                                {% if lang == 'tr' %} {{ instance.title_tr }} {% autoescape on %}{{ instance.short_description_tr|safe }}{% endautoescape %} {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-md-1">
+                            <a target="_blank" href="{% url 'job_info' instance.id instance.title_en|replace_empty %}" class="btn btn-danger">Apply</a>
+                        </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

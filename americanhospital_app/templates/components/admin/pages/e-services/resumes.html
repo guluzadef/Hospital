@@ -1,0 +1,123 @@
+{% include '../../basic/page_title.html' %}
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name
+                            <input type="search" id="search-by-name" class="form-control">
+                        </th>
+                        <th>Surname
+                            <input type="search" id="search-by-surname" class="form-control">
+                        </th>
+                        <th>Job
+                            <input type="search" id="search-by-job" class="form-control">
+                        </th>
+                        <th>Resume</th>
+                        <th>Email
+                            <input type="search" id="search-by-email" class="form-control">
+                        </th>
+                        <th>Phone
+                            <input type="search" id="search-by-phone" class="form-control">
+                        </th>
+                        <th>
+                            Age
+                            <select class="form-control custom-filter" style="width: 120px;">
+                                <option value="">Choose</option>
+                                <option value="18-25">18-25</option>
+                                <option value="25-30">25-30</option>
+                                <option value="30-35">30-35</option>
+                                <option value="40-50">40-50</option>
+                                <option value="50+">50+</option>
+                            </select>
+                        </th>
+                        <th>
+                            Gender
+                            <select class="form-control custom-filter" style="width: 120px;">
+                                <option value="">Choose</option>
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                            </select>
+                        </th>
+                        <th>
+                            Experience
+                            <select class="form-control custom-filter" style="width: 120px;">
+                                <option value="">Choose</option>
+                                <option value="1-5">1-5</option>
+                                <option value="5-10">5-10</option>
+                                <option value="10-15">10-15</option>
+                                <option value="15+">15+</option>
+                            </select>
+                        </th>
+                        <th>
+                            Education
+                            <select class="form-control custom-filter" style="width: 120px;">
+                                <option value="">Choose</option>
+                                <option value="High School Degreee">High School Degreee</option>
+                                <option value="Bachelor’s Degree">Bachelor’s Degree</option>
+                                <option value="Master’s Degree">Master’s Degree</option>
+                                <option value="Residency Degree">Residency Degree</option>
+                                <option value="Doctoral Degree">Doctoral Degree</option>
+                            </select>
+                        </th>
+                        <th>Bachelor’s Degree
+                            <input type="search" id="search-by-degree" class="form-control">
+                        </th>
+                        <th>Speciality
+                            <input type="search" id="search-by-specialty" class="form-control">
+                        </th>
+                        <th>Residency Program
+                            <input type="search" id="search-by-residency-program" class="form-control">
+                        </th>
+                        <th>Date
+                            <input type="search" id="search-by-date" class="form-control">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in resumes %}
+                        {% if instance.read_status == '1' %}
+                        <tr class="table-info">
+                            <td>{{ instance.name }}</td>
+                            <td>{{ instance.surname }}</td>
+                            <td>{{ instance.job.title_en }}</td>
+                            <td><a href="https://res.cloudinary.com/dvljbh7jn/image/upload/v1576559875/{{ instance.resume }}.pdf" class="btn btn-success" target="_blank" download="{{ instance.full_name }}">View</a></td>
+                            <td>{{ instance.email }}</td>
+                            <td>{{ instance.phone }}</td>
+                            <td>{{ instance.age }}</td>
+                            <td>{{ instance.gender }}</td>
+                            <td>{{ instance.experience }}</td>
+                            <td>{{ instance.education }}</td>
+                            <td>{{ instance.bachelor }}</td>
+                            <td>{{ instance.speciality }}</td>
+                            <td>{{ instance.residency_program }}</td>
+                            <td>{{ instance.created_at }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>{{ instance.name }}</td>
+                            <td>{{ instance.surname }}</td>
+                            <td>{{ instance.job.title_en }}</td>
+                            <td><a href="https://res.cloudinary.com/dvljbh7jn/image/upload/v1576559875/{{ instance.resume }}.pdf" class="btn btn-success" target="_blank" download="{{ instance.full_name }}">View</a></td>
+                            <td>{{ instance.email }}</td>
+                            <td>{{ instance.phone }}</td>
+                            <td>{{ instance.age }}</td>
+                            <td>{{ instance.gender }}</td>
+                            <td>{{ instance.experience }}</td>
+                            <td>{{ instance.education }}</td>
+                            <td>{{ instance.bachelor }}</td>
+                            <td>{{ instance.speciality }}</td>
+                            <td>{{ instance.residency_program }}</td>
+                            <td>{{ instance.created_at }}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

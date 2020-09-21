@@ -1,0 +1,19 @@
+<section class="blog_area single-post-area section-padding">
+    <div class="container">
+
+        <div class="col-lg-12">
+            {% if lang == None or lang == 'en' %}
+                {% autoescape on %}{{ about.text_en|safe }}{% endautoescape %}
+            {% endif %}
+            {% if lang == 'gr' %}
+                {% autoescape on %}{{ about.text_gr|safe }}{% endautoescape %}
+            {% endif %}
+            {% if lang == 'ru' %}
+                {% autoescape on %}{{ about.text_ru|safe }}{% endautoescape %}
+            {% endif %}
+            {% if lang == 'tr' %}
+                {% autoescape on %}{{ about.text_tr|safe }}{% endautoescape %}
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+{% include '../../basic/page_title.html' %}
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }} <a href="{% url 'admin_add_slider' %}" class="btn btn-danger btn-sm float-right">Add Slider</a></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Text</th>
+                        <th>Button</th>
+                        <th>Date</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in sliders %}
+                    <tr>
+                        <td><img src="https://res.cloudinary.com/dvljbh7jn/image/upload/c_scale,w_150,h_150/v1575654181/{{ instance.image }}.jpg" class="img-fluid"></td>
+                        <td>{{ instance.title_en }}</td>
+                        <td>{{ instance.text_en }}</td>
+                        <td><button class="btn btn-primary">{{ instance.menu.title_en }}</button></td>
+                        <td>{{ instance.created_at }}</td>
+                        <td><a href="{% url 'admin_slider_detail' instance.id %}" class="btn btn-info btn-sm">More</a></td>
+                        <td><a href="{% url 'admin_delete' instance.id 'slider' %}" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

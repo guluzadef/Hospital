@@ -1,0 +1,39 @@
+{% include '../../basic/page_title.html' %}
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in appointments %}
+                        {% if instance.read_status == '1' %}
+                            <tr class="table-info">
+                                <td>{{ instance.full_name }}</td>
+                                <td>{{ instance.doctor.full_name }}</td>
+                                <td>{{ instance.date }}</td>
+                                <td><a href="{% url 'admin_read_appointment' instance.id %}" class="btn btn-danger btn-sm">Read</a></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td>{{ instance.full_name }}</td>
+                                <td>{{ instance.doctor.full_name }}</td>
+                                <td>{{ instance.date }}</td>
+                                <td><a href="{% url 'admin_read_appointment' instance.id %}" class="btn btn-danger btn-sm">Read</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

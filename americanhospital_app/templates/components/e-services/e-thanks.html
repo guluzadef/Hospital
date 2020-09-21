@@ -1,0 +1,124 @@
+<section class="contact-section">
+    <div class="container">
+        <div class="col-12">
+            <h2 class="contact-title">
+                {% if text_type == 'thanks' %}
+                    {% if lang == None or lang == 'en' %}
+                        You can gratitude to our doctors or general hospital using this application. We wil publish it in our site.
+                    {% endif %}
+                    {% if lang == 'gr' %}
+                        აპლიკაციის მეშვეობით გამოხატეთ მადლიერება ჩვენი ექიმების ან ზოგადად, საავადმყოფოს მიმართ. მონაცემები გამოქვეყნდება ჩვენს ვებგვერდზე
+                    {% endif %}
+                    {% if lang == 'ru' %}
+                        You can gratitude to our doctors or general hospital using this application. We wil publish it in our site.
+                    {% endif %}
+                    {% if lang == 'tr' %}
+                        You can gratitude to our doctors or general hospital using this application. We wil publish it in our site.
+                    {% endif %}
+                {% else %}
+                    {% if lang == None or lang == 'en' %}
+                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and wish him to get well soon
+                    {% endif %}
+                    {% if lang == 'gr' %}
+                        მიწერეთ თქვენთვის ძვირფას ადამიანს, რომელიც ჩვენს საავადმყოფოში მკურნალობს და უსურვეთ მას გამოჯანმრთელება
+                    {% endif %}
+                    {% if lang == 'ru' %}
+                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and wish him to get well soon
+                    {% endif %}
+                    {% if lang == 'tr' %}
+                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and wish him to get well soon
+                    {% endif %}
+                {% endif %}
+            </h2>
+        </div>
+        <div class="col-lg-12">
+            <form class="form-contact contact_form" action="{% url 'e-thanks' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="text_type" value="{{ text_type }}">
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Full Name
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            სახელი და გვარი
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Full Name
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Full Name
+                        {% endif %}
+                        <span class="mandatory">*</span>
+                    </label>
+                    <input class="form-control valid" name="full_name" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        {% if text_type == 'thanks' %}
+                            {% if lang == None or lang == 'en' %}
+                                The person or department you want to thank
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                ადამიანი ან დეპარტამენტი, რომლის სახელზეც გსურთ შეტყობინების გაგზავნა
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                The person or department you want to thank
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                The person or department you want to thank
+                            {% endif %}
+                        {% else %}
+                            {% if lang == None or lang == 'en' %}
+                                To whom you want to send a message
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                ვისთვის გსურთ შეტყობინების გაგზავნა
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                To whom you want to send a message
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                To whom you want to send a message
+                            {% endif %}
+                        {% endif %}<span class="mandatory">*</span></label>
+                    <input class="form-control valid" name="to_whom" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        {% if lang == None or lang == 'en' %}
+                            Message
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            შეიყვანეთ ტექსტი
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Message
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Message
+                        {% endif %}
+                        <span class="mandatory">*</span>
+                    </label>
+                    <textarea class="form-control valid" name="text" cols="30" rows="9" required></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="button button-contactForm boxed-btn">
+                        {% if lang == None or lang == 'en' %}
+                            Send
+                        {% endif %}
+                        {% if lang == 'gr' %}
+                            გაგზავნა
+                        {% endif %}
+                        {% if lang == 'ru' %}
+                            Send
+                        {% endif %}
+                        {% if lang == 'tr' %}
+                            Send
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+<div class="col-xl-6 col-md-6 mb-4">
+    <div class="card mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add Admin</h6>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'admin_add_admin' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="psw" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

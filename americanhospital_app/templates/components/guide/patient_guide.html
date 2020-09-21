@@ -1,0 +1,22 @@
+<section class="blog_area single-post-area section-padding">
+    <div class="container">
+        <div class="col-lg-12">
+            {% if lang == None or lang == 'en' %}
+                <h3>{{ patient_guide.title_en }}</h3>
+                {% autoescape on %}{{ patient_guide.text_en|safe }}{% endautoescape %}
+            {% endif %}
+            {% if lang == 'gr' %}
+                <h3>{{ patient_guide.title_gr }}</h3>
+                {% autoescape on %}{{ patient_guide.text_gr|safe }}{% endautoescape %}
+            {% endif %}
+            {% if lang == 'ru' %}
+                <h3>{{ patient_guide.title_ru }}</h3>
+                {% autoescape on %}{{ patient_guide.text_ru|safe }}{% endautoescape %}
+            {% endif %}
+            {% if lang == 'tr' %}
+                <h3>{{ patient_guide.title_tr }}</h3>
+                {% autoescape on %}{{ patient_guide.text_tr|safe }}{% endautoescape %}
+            {% endif %}
+        </div>
+    </div>
+</section>

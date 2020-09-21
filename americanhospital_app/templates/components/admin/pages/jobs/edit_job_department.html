@@ -1,0 +1,39 @@
+{% include '../../basic/page_title.html' %}
+{% load static %}
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="{% url 'admin_edit_job_department' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ job_info.id }}">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <input type="text" name="title_en" class="form-control" value="{{ job_info.title_en }}" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <input type="text" name="title_gr" class="form-control" value="{{ job_info.title_gr }}" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <input type="text" name="title_ru" class="form-control" value="{{ job_info.title_ru }}" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <input type="text" name="title_tr" class="form-control" value="{{ job_info.title_tr }}" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

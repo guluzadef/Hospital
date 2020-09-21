@@ -1,0 +1,58 @@
+{% load static %}
+<div class="col-xl-6 col-md-6 mb-4">
+    <div class="card mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Contact Information</h6>
+        </div>
+        <form action="{% url 'admin_edit_contact' %}" method="POST">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Address <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                            <input type="text" name="address_en" class="form-control" value="{{ contact_info.address_en }}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Address <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                            <input type="text" name="address_gr" class="form-control" value="{{ contact_info.address_gr }}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Address <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                            <input type="text" name="address_ru" class="form-control" value="{{ contact_info.address_ru }}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Address <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                            <input type="text" name="address_tr" class="form-control" value="{{ contact_info.address_tr }}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ contact_info.email }}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" name="phone" class="form-control" value="{{ contact_info.phone }}" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

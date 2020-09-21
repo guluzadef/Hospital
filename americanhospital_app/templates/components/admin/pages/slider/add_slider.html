@@ -1,0 +1,78 @@
+{% include '../../basic/page_title.html' %}
+{% load static %}
+<div class="card mb-4">
+    <div class="card-body">
+        {% include '../../basic/alert.html' %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" class="form-control" required>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <input type="text" name="title_en" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <input type="text" name="title_gr" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <input type="text" name="title_ru" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Title <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <input type="text" name="title_tr" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Text <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                        <input type="text" name="text_en" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Text <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                        <input type="text" name="text_gr" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Text <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                        <input type="text" name="text_ru" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Text <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                        <input type="text" name="text_tr" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Button</label>
+                <select class="form-control" name="call_to_action" required>
+                    <option value="">Choose</option>
+                    {% for instance in menu %}
+                    <option value="{{ instance.id }}">{{ instance.title_en }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

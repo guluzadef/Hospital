@@ -1,0 +1,61 @@
+{% load static %}
+<div class="col-xl-12 col-md-6 mb-4">
+    <div class="card mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">History</h6>
+        </div>
+        <form action="{% url 'admin_edit_about' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="page_type" value="history">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>History <img src="{% static 'website/img/united-kingdom.svg' %}" width="20" /></label>
+                            <div class="summernote-outerwrapper">
+                                <div class="summernote-wrapper first-summernote">
+                                    <textarea id="text_en" name="text_en">{% autoescape on %}{{ history_info.text_en|safe }}{% endautoescape %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>History <img src="{% static 'website/img/georgia.svg' %}" width="20" /></label>
+                            <div class="summernote-outerwrapper">
+                                <div class="summernote-wrapper first-summernote">
+                                    <textarea id="text_gr" name="text_gr">{% autoescape on %}{{ history_info.text_gr|safe }}{% endautoescape %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>History <img src="{% static 'website/img/russia.svg' %}" width="20" /></label>
+                            <div class="summernote-outerwrapper">
+                                <div class="summernote-wrapper first-summernote">
+                                    <textarea id="text_ru" name="text_ru">{% autoescape on %}{{ history_info.text_ru|safe }}{% endautoescape %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>History <img src="{% static 'website/img/turkey.svg' %}" width="20" /></label>
+                            <div class="summernote-outerwrapper">
+                                <div class="summernote-wrapper first-summernote">
+                                    <textarea id="text_tr" name="text_tr">{% autoescape on %}{{ history_info.text_tr|safe }}{% endautoescape %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

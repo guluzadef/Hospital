@@ -1,0 +1,61 @@
+{% extends 'pages/admin/resume-layout.html' %}
+{% block content %}
+    {% include '../../../components/admin/pages/e-services/resumes.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<style>
+    .table {
+        position: relative;
+    }
+    .table thead {
+        position: sticky !important;
+        top: 0 !important;
+        background: #fff;
+        z-index: 3;
+    }
+
+    .table tbody tr td:nth-child(1),
+    .table thead tr th:nth-child(1) {
+        position: sticky;
+        left: 0;
+        background: #c7ebf1;
+        z-index: 2;
+    }
+
+    .table tbody td {
+        background: none;
+    }
+
+    .table tbody tr.table-info {
+        background: #fff;
+    }
+
+    .table tbody tr.table-info:hover {
+        background: #efefef !important;
+    }
+
+    .table tbody tr.table-info:hover td:nth-child(1) {
+        background: #efefef;
+    }
+
+    #content-wrapper {
+        overflow: auto;
+        width: auto;
+    }
+</style>
+
+<script>
+    $('document').ready(function(){
+        let table = $('.table').DataTable();
+
+        table.columns().every(function(){
+            let column = this;
+
+            $('input[type=search]', this.header()).on('keyup change', function(){
+                column.search(this.value).draw();
+            })
+        })
+    })
+</script>
+{% endblock %}

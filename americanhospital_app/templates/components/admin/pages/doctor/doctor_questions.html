@@ -1,0 +1,42 @@
+{% include '../../basic/page_title.html' %}
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Doctor</th>
+                        <th>File</th>
+                        <th>Question</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in questions %}
+                    <tr>
+                        <td>{{ instance.full_name }}</td>
+                        <td>{{ instance.email }}</td>
+                        <td>{{ instance.phone }}</td>
+                        <td>{{ instance.doctor.full_name_en }}</td>
+                        <td>
+                            {% if instance.file|length > 0 %}
+                            <a href="https://res.cloudinary.com/dvljbh7jn/image/upload/v1576559875/{{ instance.file }}.jpg" target="_blank">
+                                <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/v1576559875/{{ instance.file }}.jpg" width="100" height="100" />
+                            </a>
+                            {% endif %}
+                        </td>
+                        <td>{{ instance.text }}</td>
+                        <td>{{ instance.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
