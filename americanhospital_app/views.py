@@ -1,5 +1,6 @@
 import hashlib
 from django.shortcuts import render, redirect
+from django.utils import timezone
 from django.views.generic.base import View
 from django.db.models import Q
 from .tasks import contact_email
@@ -534,6 +535,8 @@ class EComplaintView(View):
         doctors = Doctor.objects.filter(status='1').order_by('-id')
         contact_info = fetch_contact_info()
         social_media = fetch_social_media()
+        images = PageImage.objects.filter(page__name='E-complaint')
+
         menu = fetch_menu()
         submenu = fetch_submenu()
 
@@ -545,6 +548,7 @@ class EComplaintView(View):
             'contact_info': contact_info,
             'social_media': social_media,
             'menu': menu,
+            'image_page': images,
             'submenu': submenu,
             'lang': request.session.get('lang'),
             'subject': 'complaint'
@@ -559,6 +563,8 @@ class ESuggestionView(View):
         doctors = Doctor.objects.filter(status='1').order_by('-id')
         contact_info = fetch_contact_info()
         social_media = fetch_social_media()
+        images = PageImage.objects.filter(page__name='E-suggestion')
+
         menu = fetch_menu()
         submenu = fetch_submenu()
 
@@ -569,6 +575,7 @@ class ESuggestionView(View):
             'doctors': doctors,
             'contact_info': contact_info,
             'social_media': social_media,
+            'image_page': images,
             'menu': menu,
             'submenu': submenu,
             'lang': request.session.get('lang'),
@@ -674,6 +681,7 @@ class EThanksView(View):
         social_media = fetch_social_media()
         menu = fetch_menu()
         submenu = fetch_submenu()
+        images = PageImage.objects.filter(page__name='E-thanks')
 
         title = ''
         text_type = ''
@@ -693,6 +701,7 @@ class EThanksView(View):
             'contact_info': contact_info,
             'social_media': social_media,
             'menu': menu,
+            'image_page': images,
             'submenu': submenu,
             'lang': request.session.get('lang')
         }
@@ -1315,12 +1324,170 @@ class AdminAddDoctorView(View):
                 doctor.description_gr = request.POST.get('description_gr')
                 doctor.description_ru = request.POST.get('description_ru')
                 doctor.description_tr = request.POST.get('description_tr')
+                doctor.work_experience = request.POST.get('work_experience')
+                doctor.email = request.POST.get('email')
 
                 doctor.save()
 
                 context = {
                     'title': 'Add Doctor',
                     'success_text': 'Doctor added'
+                }
+
+                return render(request, self.template_name, context)
+
+        except:
+            return redirect('/')
+
+
+class AdminAddMedicalView(View):
+    template_name = 'pages/admin/medical_tech/medical.html'
+
+    def get(self, request):
+        if request.session.get('admin_id') is not None:
+
+            context = {
+                'title': 'Add Medical Technologies'
+            }
+
+            return render(request, self.template_name, context)
+        else:
+            return redirect('/')
+
+    def post(self, request):
+
+        try:
+            if request.method == 'POST' and request.session.get('admin_id') is not None:
+                doctor = MedicalTechnologies()
+
+                doctor.image = request.FILES.get('image')
+                doctor.title_en = request.POST.get('title_en')
+                doctor.title_gr = request.POST.get('title_gr')
+                doctor.title_ru = request.POST.get('title_ru')
+                doctor.title_tr = request.POST.get('title_tr')
+                doctor.description_en = request.POST.get('description_en')
+                doctor.description_gr = request.POST.get('description_gr')
+                doctor.description_ru = request.POST.get('description_ru')
+                doctor.description_tr = request.POST.get('description_tr')
+                doctor.status = request.POST.get('status')
+
+                doctor.save()
+
+                context = {
+                    'title': 'Add Medical Technologies',
+                    'success_text': 'Medical Technologies Added!'
+                }
+
+                return render(request, self.template_name, context)
+
+        except:
+            return redirect('/')
+
+
+class AdminMedicallistView(View):
+    template_name = 'pages/admin/medical_tech/medical_list.html'
+
+    def get(self, request):
+        if request.session.get('admin_id') is not None:
+
+            news = MedicalTechnologies.objects.filter(status='1').order_by('-id')
+
+            context = {
+                'news': news,
+            }
+
+            return render(request, self.template_name, context)
+        else:
+            return redirect('/')
+
+
+class AdminMedicalDetailView(View):
+    template_name = 'pages/admin/medical_tech/medical_edit.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.session.get('admin_id') is not None:
+            # news = News.objects.all()
+            id_ = self.kwargs.get("id")
+
+            news_info = MedicalTechnologies.objects.get(id=id_, status='1')
+
+            context = {
+                # 'title': news_info.title_en,
+                'news_info': news_info,
+                # 'news': news
+            }
+
+            return render(request, self.template_name, context)
+        else:
+            return redirect('/')
+
+    def post(self, request, id):
+
+        try:
+            if request.method == 'POST' and request.session.get('admin_id') is not None:
+                doctor = MedicalTechnologies.objects.filter(id=id).last()
+
+                doctor.image = request.FILES.get('image')
+                doctor.title_en = request.POST.get('title_en')
+                doctor.title_gr = request.POST.get('title_gr')
+                doctor.title_ru = request.POST.get('title_ru')
+                doctor.title_tr = request.POST.get('title_tr')
+                doctor.description_en = request.POST.get('description_en')
+                doctor.description_gr = request.POST.get('description_gr')
+                doctor.description_ru = request.POST.get('description_ru')
+                doctor.description_tr = request.POST.get('description_tr')
+                doctor.status = request.POST.get('status')
+
+                doctor.save()
+
+                context = {
+                    'title': 'Add Medical Technologies',
+                    'success_text': 'Medical Technologies Added!'
+                }
+
+                return redirect('admin_medical_list')
+
+        except:
+            return redirect('/')
+
+
+class AdminKeywordView(View):
+    template_name = 'pages/admin/news/keywords.html'
+
+    def get(self, request):
+
+        if request.session.get('admin_id') is not None:
+            post = News.objects.all()
+
+            context = {
+                'title': 'Add Keyword',
+                'news': post
+            }
+
+            return render(request, self.template_name, context)
+        else:
+            return redirect('/')
+
+    def post(self, request):
+
+        try:
+            if request.method == 'POST' and request.session.get('admin_id') is not None:
+                keyword = Keywords()
+                new = request.POST.get('news')
+                test = News.objects.filter(title_en=new).last()
+
+                print(test)
+
+                keyword.name = request.POST.get('name')
+                keyword.news = test
+                keyword.status = request.POST.get('status')
+
+                keyword.save()
+                # print(keyword.news)
+
+                context = {
+                    'title': 'Add Keyword',
+                    'success_text': 'Keyword added'
                 }
 
                 return render(request, self.template_name, context)
@@ -1802,6 +1969,12 @@ class AdminDeleteView(View):
             if delete_type == 'news':
                 News.objects.filter(id=id_, status='1').update(status='0')
                 return redirect('admin_news')
+            if delete_type == 'keyword':
+                Keywords.objects.filter(id=id_, status='1').update(status='0')
+                return redirect('admin_keywords')
+            if delete_type == 'medical':
+                MedicalTechnologies.objects.filter(id=id_, status='1').update(status='0')
+                return redirect('admin_medical_list')
             if delete_type == 'hide':
                 News.objects.filter(id=id_, status='1').update(display_home='0')
                 return redirect('admin_news')
@@ -1841,8 +2014,10 @@ class AdminWriteNewsView(View):
 
     def get(self, request):
         if request.session.get('admin_id') is not None:
+            doctors = Doctor.objects.all()
 
             if request.resolver_match.url_name == 'admin_write_news':
+
                 title = 'Write News'
                 post_type = 'news'
             else:
@@ -1851,7 +2026,8 @@ class AdminWriteNewsView(View):
 
             context = {
                 'title': title,
-                'post_type': post_type
+                'post_type': post_type,
+                'doctor': doctors
             }
 
             return render(request, self.template_name, context)
@@ -1864,6 +2040,9 @@ class AdminWriteNewsView(View):
             if request.method == 'POST' and request.session.get('admin_id') is not None:
 
                 news = News()
+                doc = request.POST.get('doctor')
+                test = Doctor.objects.filter(full_name_en=doc).last()
+                print(test.id, '++++++++++++++')
 
                 news.image = request.FILES.get('image')
                 news.title_en = request.POST.get('title_en')
@@ -1874,7 +2053,9 @@ class AdminWriteNewsView(View):
                 news.description_gr = request.POST.get('description_gr')
                 news.description_ru = request.POST.get('description_ru')
                 news.description_tr = request.POST.get('description_tr')
-                news.keywords = request.POST.get('keywords')
+                # news.keywords = request.POST.get('keywords')
+                news.doctor = test
+
                 news.post_type = request.POST.get('post_type')
 
                 news.save()
@@ -1920,6 +2101,71 @@ class AdminNewsView(View):
 
             return render(request, self.template_name, context)
         else:
+            return redirect('/')
+
+
+class AdminKeywordsView(View):
+    template_name = 'pages/admin/news/keywordlist.html'
+
+    def get(self, request):
+        if request.session.get('admin_id') is not None:
+
+            news = Keywords.objects.filter(status='1').order_by('-id')
+
+            context = {
+                'news': news,
+            }
+
+            return render(request, self.template_name, context)
+        else:
+            return redirect('/')
+
+
+class AdminKeywordDetailView(View):
+    template_name = 'pages/admin/news/edit_keyword.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.session.get('admin_id') is not None:
+            news = News.objects.all()
+            id_ = self.kwargs.get("id")
+
+            news_info = Keywords.objects.get(id=id_, status='1')
+
+            context = {
+                # 'title': news_info.title_en,
+                'news_info': news_info,
+                'news': news
+            }
+
+            return render(request, self.template_name, context)
+        else:
+            return redirect('/')
+
+    def post(self, request, id):
+
+        try:
+            if request.method == 'POST' and request.session.get('admin_id') is not None:
+                keyword = Keywords.objects.filter(id=id).last()
+                new = request.POST.get('news')
+                test = News.objects.filter(title_en=new).last()
+
+                print(test)
+
+                keyword.name = request.POST.get('name')
+                keyword.news = test
+                keyword.status = request.POST.get('status')
+
+                keyword.save()
+                # print(keyword.news)
+
+                context = {
+                    'title': 'Add Keyword',
+                    'success_text': 'Keyword added'
+                }
+
+                return redirect('admin_keywords')
+
+        except:
             return redirect('/')
 
 
@@ -1970,6 +2216,32 @@ class AdminEditNewsView(View):
                 return redirect('/admin_news_detail/' + str(news.id))
 
         except:
+            return redirect('/')
+
+
+class AdminDepartmentsView(View):
+    template_name = 'pages/admin/news/news.html'
+
+    def get(self, request):
+        if request.session.get('admin_id') is not None:
+
+            if request.resolver_match.url_name == 'admin_news':
+                title = 'News'
+                post_type = 'news'
+            else:
+                title = 'Health Guides'
+                post_type = 'health_guide'
+
+            news = News.objects.filter(status='1', post_type=post_type).order_by('-id')
+
+            context = {
+                'title': title,
+                'news': news,
+                'page_type': request.resolver_match.url_name
+            }
+
+            return render(request, self.template_name, context)
+        else:
             return redirect('/')
 
 
@@ -2692,6 +2964,8 @@ class MedicalTechView(View):
 
         news = MedicalTechnologies.objects.filter(status='1').order_by('-id')
         doctors = Doctor.objects.filter(status='1').order_by('-id')
+        images = PageImage.objects.filter(page__name='Medical_Tech')
+
         contact_info = fetch_contact_info()
         social_media = fetch_social_media()
         menu = fetch_menu()
@@ -2703,6 +2977,7 @@ class MedicalTechView(View):
             'url': 'https://ahtbilisi.com/',
             'news': news,
             'doctors': doctors,
+            'image_page': images,
             'contact_info': contact_info,
             'social_media': social_media,
             'menu': menu,

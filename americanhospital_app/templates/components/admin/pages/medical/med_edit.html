@@ -2,37 +2,40 @@
 {% load static %}
 <div class="card mb-4">
     <div class="card-body">
-        {% include '../../basic/alert.html' %}
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="hidden" name="post_type" value="{{ post_type }}">
+            <input type="hidden" name="id" value="{{ news_info.id }}">
             <div class="form-group">
                 <label>Image</label>
-                <input type="file" name="image" class="form-control" required>
+                <input type="file" name="image" class="form-control">
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Title <img src="{% static 'website/img/united-kingdom.svg' %}" width="20"/></label>
-                        <input type="text" name="title_en" class="form-control" required>
+                        <input type="text" name="title_en" class="form-control" value="{{ news_info.title_en }}"
+                               required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Title <img src="{% static 'website/img/georgia.svg' %}" width="20"/></label>
-                        <input type="text" name="title_gr" class="form-control" required>
+                        <input type="text" name="title_gr" class="form-control" value="{{ news_info.title_gr }}"
+                               required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Title <img src="{% static 'website/img/russia.svg' %}" width="20"/></label>
-                        <input type="text" name="title_ru" class="form-control" required>
+                        <input type="text" name="title_ru" class="form-control" value="{{ news_info.title_ru }}"
+                               required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Title <img src="{% static 'website/img/turkey.svg' %}" width="20"/></label>
-                        <input type="text" name="title_tr" class="form-control" required>
+                        <input type="text" name="title_tr" class="form-control" value="{{ news_info.title_tr }}"
+                               required>
                     </div>
                 </div>
             </div>
@@ -42,7 +45,8 @@
                         <label>Description <img src="{% static 'website/img/united-kingdom.svg' %}" width="20"/></label>
                         <div class="summernote-outerwrapper">
                             <div class="summernote-wrapper first-summernote">
-                                <textarea id="text_en" name="description_en"></textarea>
+                                <textarea id="text_en" name="description_en">{% autoescape on %}
+                                    {{ news_info.description_en|safe }}{% endautoescape %}</textarea>
                             </div>
                         </div>
                     </div>
@@ -52,7 +56,8 @@
                         <label>Description <img src="{% static 'website/img/georgia.svg' %}" width="20"/></label>
                         <div class="summernote-outerwrapper">
                             <div class="summernote-wrapper first-summernote">
-                                <textarea id="text_gr" name="description_gr"></textarea>
+                                <textarea id="text_gr" name="description_gr">{% autoescape on %}
+                                    {{ news_info.description_gr|safe }}{% endautoescape %}</textarea>
                             </div>
                         </div>
                     </div>
@@ -64,7 +69,8 @@
                         <label>Description <img src="{% static 'website/img/russia.svg' %}" width="20"/></label>
                         <div class="summernote-outerwrapper">
                             <div class="summernote-wrapper first-summernote">
-                                <textarea id="text_ru" name="description_ru"></textarea>
+                                <textarea id="text_ru" name="description_ru">{% autoescape on %}
+                                    {{ news_info.description_ru|safe }}{% endautoescape %}</textarea>
                             </div>
                         </div>
                     </div>
@@ -74,20 +80,23 @@
                         <label>Description <img src="{% static 'website/img/turkey.svg' %}" width="20"/></label>
                         <div class="summernote-outerwrapper">
                             <div class="summernote-wrapper first-summernote">
-                                <textarea id="text_tr" name="description_tr"></textarea>
+                                <textarea id="text_tr" name="description_tr">{% autoescape on %}
+                                    {{ news_info.description_tr|safe }}{% endautoescape %}</textarea>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Doctor</label>
-                        <select name="doctor" id="doctor" class="form-control">
-                            {% for i in doctor %}
-                                <option value="{{ i }}">{{ i.full_name_en }}</option>
-
-                            {% endfor %}
-                        </select>
+                        <label>Status</label>
+                        <input type="number" name="status" class="form-control" required value="{{ news_info.status }}">
+                        {#                        <select name="doctor" id="doctor" class="form-control">#}
+                        {#                            {% for i in doctor %}#}
+                        {#                                <option value="{{ i }}">{{ i.full_name_en }}</option>#}
+                        {##}
+                        {#                            {% endfor %}#}
+                        {#                        </select>#}
                     </div>
                 </div>
             </div>

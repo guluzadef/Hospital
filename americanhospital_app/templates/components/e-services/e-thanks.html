@@ -1,32 +1,164 @@
+<style>
+    .slider_text h3 {
+        color: #ffffffd9 !important;
+    }
+
+    .slider_text p {
+        color: #000000 !important;
+    }
+
+    .search {
+        width: 50%;
+        box-sizing: border-box;
+        border: 2px solid #000;
+        border-radius: 4px;
+        font-size: 18px;
+        background-color: #e2e2e2;
+        /* background-image: url(searchicon.png); */
+        /* background-position: 10px 10px; */
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    ::-moz-placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    :-ms-input-placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    ::placeholder {
+        color: #000000c9;
+        font-size: 17px;
+    }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: left;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: end;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
+<div class="slider_area">
+
+    <div class="slider_active owl-carousel">
+
+        {#            <img src="{{ instance.image.url }}" alt="">#}
+        {% for instance in image_page %}
+            <div class="single_slider d-flex align-items-center"
+                 style="background-image: url('https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text ">
+                                {% if lang == None or lang == 'en' %}
+                                    <h3><span>{{ instance.page.title_en }}</span></h3>
+                                    <p>{{ instance.page.desc_en }} </p>
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    <h3><span>{{ instance.page.title_gr }}</span></h3>
+                                    <p>{{ instance.page.desc_gr }}</p>
+
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    <h3><span>{{ instance.page.title_ru }}</span></h3>
+                                    <p>{{ instance.page.desc_ru }}</p>
+
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    <h3><span>{{ instance.page.title_tr }}</span></h3>
+                                    <p>{{ instance.page.desc_tr }}</p>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 <section class="contact-section">
     <div class="container">
         <div class="col-12">
             <h2 class="contact-title">
                 {% if text_type == 'thanks' %}
                     {% if lang == None or lang == 'en' %}
-                        You can gratitude to our doctors or general hospital using this application. We wil publish it in our site.
+                        You can gratitude to our doctors or general hospital using this application. We wil publish it
+                        in our site.
                     {% endif %}
                     {% if lang == 'gr' %}
-                        აპლიკაციის მეშვეობით გამოხატეთ მადლიერება ჩვენი ექიმების ან ზოგადად, საავადმყოფოს მიმართ. მონაცემები გამოქვეყნდება ჩვენს ვებგვერდზე
+                        აპლიკაციის მეშვეობით გამოხატეთ მადლიერება ჩვენი ექიმების ან ზოგადად, საავადმყოფოს მიმართ.
+                        მონაცემები გამოქვეყნდება ჩვენს ვებგვერდზე
                     {% endif %}
                     {% if lang == 'ru' %}
-                        You can gratitude to our doctors or general hospital using this application. We wil publish it in our site.
+                        You can gratitude to our doctors or general hospital using this application. We wil publish it
+                        in our site.
                     {% endif %}
                     {% if lang == 'tr' %}
-                        You can gratitude to our doctors or general hospital using this application. We wil publish it in our site.
+                        You can gratitude to our doctors or general hospital using this application. We wil publish it
+                        in our site.
                     {% endif %}
                 {% else %}
                     {% if lang == None or lang == 'en' %}
-                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and wish him to get well soon
+                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and
+                        wish him to get well soon
                     {% endif %}
                     {% if lang == 'gr' %}
-                        მიწერეთ თქვენთვის ძვირფას ადამიანს, რომელიც ჩვენს საავადმყოფოში მკურნალობს და უსურვეთ მას გამოჯანმრთელება
+                        მიწერეთ თქვენთვის ძვირფას ადამიანს, რომელიც ჩვენს საავადმყოფოში მკურნალობს და უსურვეთ მას
+                        გამოჯანმრთელება
                     {% endif %}
                     {% if lang == 'ru' %}
-                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and wish him to get well soon
+                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and
+                        wish him to get well soon
                     {% endif %}
                     {% if lang == 'tr' %}
-                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and wish him to get well soon
+                        You can send a get-well-soon-card to your relative who’s having a treatment in the hospital and
+                        wish him to get well soon
                     {% endif %}
                 {% endif %}
             </h2>

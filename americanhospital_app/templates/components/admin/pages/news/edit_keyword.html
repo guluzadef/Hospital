@@ -1,0 +1,51 @@
+{% include '../../basic/page_title.html' %}
+{% load static %}
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ news_info.id }}">
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" class="form-control">
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Name <img src="{% static 'website/img/united-kingdom.svg' %}" width="20"/></label>
+                        <input type="text" name="name" class="form-control" value="{{ news_info.name }}"
+                               required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>News <img src="{% static 'website/img/turkey.svg' %}" width="20"/></label>
+                        <select name="news" id="news" class="form-control">
+                            <option value="{{ news_info.news }}" selected>{{ news_info.news }}</option>
+
+                            {% for i in news %}
+                                {% if i != news_info.news %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endif %}
+
+                            {% endfor %}
+                            {#                            <option value="salam">salam</option>#}
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Status <img src="{% static 'website/img/turkey.svg' %}" width="20"/></label>
+                        <input type="text" name="status" class="form-control" value="{{ news_info.status }}"
+                               required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

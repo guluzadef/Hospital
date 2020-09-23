@@ -43,25 +43,30 @@
 </div>
 
 <div class="expert_doctors_area doctor_page">
-    <div class="container" style="display: flex;padding: 0">
-        <div class="sel">
+    <div class="container">
+        <div class="sel" style="width: 35%;">
             <form method="post" action="{% url 'doctors' %}">
                 {% csrf_token %}
                 <label for="departments" style="font-size: 16px">Choose a Department:</label>
+                <div class="buton" style="display: flex">
+                    <select name="departments" id="departments" class="form-control">
+                        {% for i in department %}
+                            <option value="{{ i }}">{{ i }}</option>
 
-                <select name="departments" id="departments" class="form-control">
-                    {% for i in department %}
-                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                        {#                            <option value="salam">salam</option>#}
 
-                    {% endfor %}
-                    {#                            <option value="salam">salam</option>#}
+                    </select>
+                    <input class="btn btn-success" style="margin-left: 4px;margin-bottom: 20px" type="submit" value="Submit">
+                    <a href="{% url 'doctors' %}"  style="margin-left: 4px;margin-bottom: 20px" class="btn btn-dark">Show All</a>
 
-                </select>
-                <input class="btn btn-success" type="submit" value="Submit" style="margin-top: 11px;">
-                <a href="{% url 'doctors' %}" style="margin-top: 11px;" class="form-control">Show All</a>
+                </div>
+                <hr>
 
             </form>
         </div>
+
+
         <div class="row" style="margin-left: 0">
 
             {% for instance in doctors %}

@@ -1,7 +1,46 @@
 {% load custom_tags %}
+<div class="slider_area">
+
+    <div class="slider_active owl-carousel">
+
+        {#            <img src="{{ instance.image.url }}" alt="">#}
+        {% for instance in image_page %}
+            <div class="single_slider d-flex align-items-center"
+                 style="background-image: url('https://res.cloudinary.com/dvljbh7jn/image/upload/v1575654181/{{ instance.image }}.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text ">
+                                {% if lang == None or lang == 'en' %}
+                                    <h3><span>{{ instance.page.title_en }}</span></h3>
+                                    <p>{{ instance.page.desc_en }} </p>
+                                {% endif %}
+                                {% if lang == 'gr' %}
+                                    <h3><span>{{ instance.page.title_gr }}</span></h3>
+                                    <p>{{ instance.page.desc_gr }}</p>
+
+                                {% endif %}
+                                {% if lang == 'ru' %}
+                                    <h3><span>{{ instance.page.title_ru }}</span></h3>
+                                    <p>{{ instance.page.desc_ru }}</p>
+
+                                {% endif %}
+                                {% if lang == 'tr' %}
+                                    <h3><span>{{ instance.page.title_tr }}</span></h3>
+                                    <p>{{ instance.page.desc_tr }}</p>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 <div class="our_department_area">
     <div class="container">
-        <input type="text" id="news" class="form-control mb-4" placeholder="Search">
         <div class="row">
             {% for instance in news %}
                 <div class="col-xl-4 col-md-6 col-lg-4 news_card">

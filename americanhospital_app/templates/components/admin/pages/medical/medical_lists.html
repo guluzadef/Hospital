@@ -1,0 +1,40 @@
+{% include '../../basic/page_title.html' %}
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }}
+            {% if page_type == 'admin_news' %}
+                <a href="{% url 'admin_add_medical' %}" class="btn btn-danger btn-sm float-right">Add Medical
+                    Technologies</a>
+            {% else %}
+                <a href="{% url 'admin_add_medical' %}" class="btn btn-danger btn-sm float-right">Add Medical
+                    Technologies</a>
+            {% endif %}
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for instance in news %}
+                    <tr>
+                        <td>{{ instance.title_en }}</td>
+                        <td><a href="{% url 'admin_medical_detail' instance.id %}" class="btn btn-info btn-sm">More</a>
+                        </td>
+                        <td><a href="{% url 'admin_delete' instance.id  'medical' %}"
+                               onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -16,7 +16,8 @@ from americanhospital_app.views import LanguageView, IndexView, AboutView, Docto
     AdminPatientGuideDetailView, AdminJobsView, AdminAddJobView, AdminJobDetailView, AdminEditJobView, \
     AdminReadMessagesView, AdminReadAppointmentView, AdminCheckEResultView, AdminReadEThanksView, \
     AdminJobDepartmentsView, AdminAddJobDepartmentView, AdminJobDepartmentDetailView, AdminEditJobDepartmentView, \
-    search,success_contact,MedicalTechView,MedicalTechDetailView
+    search,success_contact,MedicalTechView,MedicalTechDetailView,AdminKeywordView,AdminAddMedicalView ,AdminKeywordsView, \
+    AdminKeywordDetailView,AdminMedicallistView,AdminMedicalDetailView
 
 urlpatterns = [
     path('lang/<str:slug>/', LanguageView.as_view(), name='lang'),
@@ -55,13 +56,18 @@ urlpatterns = [
     path('admin_logout/', AdminLogoutView.as_view(), name='admin_logout'),
     path('admin_dashboard/', AdminDashboardView.as_view(), name='admin_dashboard'),
     path('admin_account/', AdminAccountView.as_view(), name='admin_account'),
+    path('admin_keywords/', AdminKeywordsView.as_view(), name='admin_keywords'),
     path('admin_add_admin/', AdminAddAdminView.as_view(), name='admin_add_admin'),
     path('admin_change_psw/', AdminChangePswView.as_view(), name='admin_change_psw'),
     path('admin_about/<str:slug>/', AdminAboutView.as_view(), name='admin_about'),
     path('admin_delete/<int:id>/<str:slug>/', AdminDeleteView.as_view(), name='admin_delete'),
     path('admin_add_doctor/', AdminAddDoctorView.as_view(), name='admin_add_doctor'),
+    path('admin_add_medical/', AdminAddMedicalView.as_view(), name='admin_add_medical'),
+    path('admin_medical_list/', AdminMedicallistView.as_view(), name='admin_medical_list'),
+    path('admin_add_keyword/', AdminKeywordView.as_view(), name='admin_add_keyword'),
     path('admin_doctors/', AdminDoctorsView.as_view(), name='admin_doctors'),
     path('admin_doctor_detail/<int:id>/', AdminDoctorDetailView.as_view(), name='admin_doctor_detail'),
+    path('admin_medical_detail/<int:id>/', AdminMedicalDetailView.as_view(), name='admin_medical_detail'),
     path('admin_edit_doctor/', AdminEditDoctorView.as_view(), name='admin_edit_doctor'),
     path('admin_doctor_questions/', AdminDoctorQuestionView.as_view(), name='admin_doctor_questions'),
     path('admin_add_department/', AdminAddDepartmentView.as_view(), name='admin_add_department'),
@@ -77,6 +83,7 @@ urlpatterns = [
     path('admin_news/', AdminNewsView.as_view(), name='admin_news'),
     path('admin_health_guides/', AdminNewsView.as_view(), name='admin_health_guides'),
     path('admin_news_detail/<int:id>/', AdminNewsDetailView.as_view(), name='admin_news_detail'),
+    path('admin_keyword_detail/<int:id>/', AdminKeywordDetailView.as_view(), name='admin_keyword_detail'),
     path('admin_edit_news/', AdminEditNewsView.as_view(), name='admin_edit_news'),
     path('admin_patient_guides/', AdminPatientGuideView.as_view(), name='admin_patient_guides'),
     path('admin_add_patient_guide/', AdminAddPatientGuideView.as_view(), name='admin_add_patient_guide'),
