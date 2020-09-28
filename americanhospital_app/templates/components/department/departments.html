@@ -96,21 +96,21 @@
                             <div class="slider_text ">
                                 {% if lang == None or lang == 'en' %}
                                     <h3><span>{{ instance.page.title_en }}</span></h3>
-                                    <p>{{ instance.page.desc_en }} </p>
+                                    <p>{{ instance.page.desc_en|safe }} </p>
                                 {% endif %}
                                 {% if lang == 'gr' %}
                                     <h3><span>{{ instance.page.title_gr }}</span></h3>
-                                    <p>{{ instance.page.desc_gr }}</p>
+                                    <p>{{ instance.page.desc_gr|safe }}</p>
 
                                 {% endif %}
                                 {% if lang == 'ru' %}
                                     <h3><span>{{ instance.page.title_ru }}</span></h3>
-                                    <p>{{ instance.page.desc_ru }}</p>
+                                    <p>{{ instance.page.desc_ru|safe }}</p>
 
                                 {% endif %}
                                 {% if lang == 'tr' %}
                                     <h3><span>{{ instance.page.title_tr }}</span></h3>
-                                    <p>{{ instance.page.desc_tr }}</p>
+                                    <p>{{ instance.page.desc_tr|safe }}</p>
                                 {% endif %}
 
                             </div>

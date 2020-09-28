@@ -63,12 +63,15 @@ class LanguageView(View):
         return redirect('/')
 
 
+import locale
+
+
 class IndexView(View):
     template_name = 'pages/website/home.html'
 
     def get(self, request):
         sliders = Slider.objects.filter(status=1).order_by('-id')
-        news = News.objects.filter(display_home='1', status='1').order_by('-id')
+        news = News.objects.filter(display_home='1', status='1').order_by('-id')[:3]
         doctors = Doctor.objects.filter(status='1').order_by('-id')
         contact_info = fetch_contact_info()
         social_media = fetch_social_media()
@@ -288,6 +291,7 @@ class DepartmentsView(View):
 
     def get(self, request):
         departments = Department.objects.filter(status='1').order_by('name_en')
+
         doctors = Doctor.objects.filter(status='1').order_by('-id')
         contact_info = fetch_contact_info()
         social_media = fetch_social_media()
