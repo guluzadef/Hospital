@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6 ">
                         <div class="social_media_links">
-{#                            <p style="padding-right: 21px;font-weight: bold; color: #22338ad9">Follow Us</p>#}
+                            {#                            <p style="padding-right: 21px;font-weight: bold; color: #22338ad9">Follow Us</p>#}
                             {% for instance in social_media %}
                                 <a href="{{ instance.link }}" style="font-size: 19px" target="_blank"><i
                                         class="{{ instance.icon }}"></i></a>
@@ -80,7 +80,7 @@
                                     {% for instance in menu %}
                                         {% if instance.menu_type == 'header' and instance.has_submenu == '1' %}
                                             <li class="test_hover">
-                                                <a href="https://ahtbilisi.com/{{ instance.link }}"
+                                                <a href="http://94.130.187.156:8000/{{ instance.link }}"
                                                    style="color: #22338a">
                                                     {% if lang == None or lang == 'en' %}
                                                         {{ instance.title_en }} <i class="ti-angle-down"></i>
@@ -88,7 +88,7 @@
                                                             {% for instance1 in submenu %}
                                                                 {% if instance.id == instance1.menu.id %}
                                                                     <li class="test_line">
-                                                                        <a href="https://ahtbilisi.com/{{ instance1.link }}"
+                                                                        <a href="http://94.130.187.156:8000/{{ instance1.link }}"
                                                                            style="color: #22338a">{{ instance1.title_en }}</a>
                                                                     </li>
                                                                 {% endif %} {% endfor %}
@@ -99,7 +99,7 @@
                                                         {% for instance1 in submenu %}
                                                             {% if instance.id == instance1.menu.id %}
                                                                 <li class="test_line">
-                                                                    <a href="https://ahtbilisi.com/{{ instance1.link }}"
+                                                                    <a href="http://94.130.187.156:8000/{{ instance1.link }}"
                                                                        style="color: #22338a">{{ instance1.title_gr }}</a>
                                                                 </li>
                                                             {% endif %} {% endfor %}
@@ -110,7 +110,7 @@
                                                         {% for instance1 in submenu %}
                                                             {% if instance.id == instance1.menu.id %}
                                                                 <li class="test_line">
-                                                                    <a href="https://ahtbilisi.com/{{ instance1.link }}">{{ instance1.title_ru }}</a>
+                                                                    <a href="http://94.130.187.156:8000/{{ instance1.link }}">{{ instance1.title_ru }}</a>
                                                                 </li>
                                                             {% endif %} {% endfor %}
                                                     </ul>
@@ -120,7 +120,7 @@
                                                         {% for instance1 in submenu %}
                                                             {% if instance.id == instance1.menu.id %}
                                                                 <li class="test_line">
-                                                                    <a href="https://ahtbilisi.com/{{ instance1.link }}">{{ instance1.title_tr }}</a>
+                                                                    <a href="http://94.130.187.156:8000/{{ instance1.link }}">{{ instance1.title_tr }}</a>
                                                                 </li>
                                                             {% endif %} {% endfor %}
                                                     </ul>
@@ -130,7 +130,7 @@
                                         {% endif %}
                                         {% if instance.menu_type == 'header' and instance.has_submenu == '0' %}
                                             <li class="test_hover">
-                                                <a href="https://ahtbilisi.com/{{ instance.link }}"
+                                                <a href="http://94.130.187.156:8000/{{ instance.link }}"
                                                    style="color: #22338a">
                                                     {% if lang == None or lang == 'en' %}
                                                         {{ instance.title_en }}
