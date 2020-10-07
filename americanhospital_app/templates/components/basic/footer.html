@@ -14,7 +14,8 @@
                         <div class="socail_links">
                             <ul>
                                 {% for instance in social_media %}
-                                <li><a href="{{ instance.link }}" target="_blank"><i class="{{ instance.icon }}"></i></a></li>
+                                    <li><a href="{{ instance.link }}" target="_blank"><i
+                                            class="{{ instance.icon }}"></i></a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -39,14 +40,36 @@
                             {% endif %}
                         </h3>
                         <ul>
+                            {% if lang == None or lang == 'en' %}
+                                <a href="{% url 'medical_tech' %}" style="color: white;">Medical Technologies</a>
+
+                            {% endif %}
+                            {% if lang == 'gr' %}
+                                <a href="{% url 'medical_tech' %}" style="color: white;">სამედიცინო ტექნოლოგიები</a>
+
+                            {% endif %}
+                            {% if lang == 'ru' %}
+                                <a href="{% url 'medical_tech' %}" style="color: white;">Медицинские технологии
+                                </a>
+
+                            {% endif %}
+                            {% if lang == 'tr' %}
+                                <a href="{% url 'medical_tech' %}" style="color: white;">Medikal Teknolojiler
+                                </a>
+
+                            {% endif %}
                             {% for instance in menu %}
-                            <li>
-                                {% if instance.menu_type == 'footer_online' %} {% if lang == None or lang == 'en' %}
-                                <a href="{% url 'e-services' instance.link %}">{{ instance.title_en }}</a> {% endif %} {% if lang == 'gr' %}
-                                <a href="{% url 'e-services' instance.link %}">{{ instance.title_gr }}</a> {% endif %} {% if lang == 'ru' %}
-                                <a href="{% url 'e-services' instance.link %}">{{ instance.title_ru }}</a> {% endif %} {% if lang == 'tr' %}
-                                <a href="{% url 'e-services' instance.link %}">{{ instance.title_tr }}</a> {% endif %} {% endif %}
-                            </li>
+                                <li>
+                                    {% if instance.menu_type == 'footer_online' %} {% if lang == None or lang == 'en' %}
+                                        <a href="{% url 'e-services' instance.link %}">{{ instance.title_en }}</a>
+                                    {% endif %} {% if lang == 'gr' %}
+                                        <a href="{% url 'e-services' instance.link %}">{{ instance.title_gr }}</a>
+                                    {% endif %} {% if lang == 'ru' %}
+                                        <a href="{% url 'e-services' instance.link %}">{{ instance.title_ru }}</a>
+                                    {% endif %} {% if lang == 'tr' %}
+                                        <a href="{% url 'e-services' instance.link %}">{{ instance.title_tr }}</a>
+                                    {% endif %} {% endif %}
+                                </li>
                             {% endfor %}
                         </ul>
 
@@ -70,13 +93,17 @@
                         </h3>
                         <ul>
                             {% for instance in menu %}
-                            <li>
-                                {% if instance.menu_type == 'footer_about' %} {% if lang == None or lang == 'en' %}
-                                <a href="{% url 'about' instance.link %}">{{ instance.title_en }}</a> {% endif %} {% if lang == 'gr' %}
-                                <a href="{% url 'about' instance.link %}">{{ instance.title_gr }}</a> {% endif %} {% if lang == 'ru' %}
-                                <a href="{% url 'about' instance.link %}">{{ instance.title_ru }}</a> {% endif %} {% if lang == 'tr' %}
-                                <a href="{% url 'about' instance.link %}">{{ instance.title_tr }}</a> {% endif %} {% endif %}
-                            </li>
+                                <li>
+                                    {% if instance.menu_type == 'footer_about' %} {% if lang == None or lang == 'en' %}
+                                        <a href="{% url 'about' instance.link %}">{{ instance.title_en }}</a>
+                                    {% endif %} {% if lang == 'gr' %}
+                                        <a href="{% url 'about' instance.link %}">{{ instance.title_gr }}</a>
+                                    {% endif %} {% if lang == 'ru' %}
+                                        <a href="{% url 'about' instance.link %}">{{ instance.title_ru }}</a>
+                                    {% endif %} {% if lang == 'tr' %}
+                                        <a href="{% url 'about' instance.link %}">{{ instance.title_tr }}</a>
+                                    {% endif %} {% endif %}
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -98,9 +125,15 @@
                             {% endif %}
                         </h3>
                         <p style="font-size: 15px;">
-                            <i class="fas fa-map-marker-alt"></i> {% if lang == None or lang == 'en' %} {{ contact_info.address_en }} {% endif %} {% if lang == 'gr' %} {{ contact_info.address_gr }} {% endif %} {% if lang == 'ru' %} {{ contact_info.address_ru }} {% endif %} {% if lang == 'tr' %} {{ contact_info.address_tr }} {% endif %}
-                            <br> <a href="mailto:{{ contact_info.email }}" style="color: #fff;" target="_top"><i class="fa fa-envelope"></i> {{ contact_info.email }}</a>
-                            <br> <a href="tel:{{ contact_info.phone }}" style="color: #fff;"><i class="fa fa-phone"></i> {{ contact_info.phone }}</a>
+                            <i class="fas fa-map-marker-alt"></i> {% if lang == None or lang == 'en' %}
+                            {{ contact_info.address_en }} {% endif %} {% if lang == 'gr' %}
+                            {{ contact_info.address_gr }} {% endif %} {% if lang == 'ru' %}
+                            {{ contact_info.address_ru }} {% endif %} {% if lang == 'tr' %}
+                            {{ contact_info.address_tr }} {% endif %}
+                            <br> <a href="mailto:{{ contact_info.email }}" style="color: #fff;" target="_top"><i
+                                class="fa fa-envelope"></i> {{ contact_info.email }}</a>
+                            <br> <a href="tel:{{ contact_info.phone }}" style="color: #fff;"><i
+                                class="fa fa-phone"></i> {{ contact_info.phone }}</a>
                         </p>
                     </div>
                 </div>
@@ -112,7 +145,9 @@
             <div class="footer_border"></div>
             <div class="row">
                 <div class="col-xl-12">
-                    <p class="copy_right text-center">American Hospital Tbilisi &copy; <script>document.write(new Date().getFullYear());</script></p>
+                    <p class="copy_right text-center">American Hospital Tbilisi &copy;
+                        <script>document.write(new Date().getFullYear());</script>
+                    </p>
                 </div>
             </div>
         </div>
