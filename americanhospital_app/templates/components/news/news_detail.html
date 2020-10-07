@@ -17,7 +17,8 @@
                             {% endfor %}
                         </div>
                         <div class="social">
-                            <a href="whatsapp://send?text=https://onepoint.az" data-action="share/whatsapp/share">Share Whatsapp <i class="fab fa-whatsapp"></i></a>
+                            <a href="whatsapp://send?text=https://onepoint.az" data-action="share/whatsapp/share">Share
+                                Whatsapp <i class="fab fa-whatsapp"></i></a>
                         </div>
                         <div class="addthis_inline_share_toolbox"></div>
                         <h2 class="mt-2">
@@ -56,36 +57,37 @@
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget popular_post_widget">
 
-
-                        <h3 class="widget_title">Doctor</h3>
-                        <div class="media post_item">
-                            <a href="{% url 'doctor_info' news_detail.doctor.id news_detail.doctor.full_name_en|replace_empty %}">
-                                <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/c_scale,w_80,h_80/v1575654181/{{ news_detail.doctor.image }}.jpg"
-                                     alt="post">
-                            </a>
-                            <div class="media-body">
+                        {% if news_detail.doctor %}
+                            <h3 class="widget_title">Doctor</h3>
+                            <div class="media post_item">
                                 <a href="{% url 'doctor_info' news_detail.doctor.id news_detail.doctor.full_name_en|replace_empty %}">
-                                    <h3>
-                                        {% if lang == None or lang == 'en' %}
-                                            {{ news_detail.doctor.full_name_en }}
-                                        {% endif %}
-                                        {% if lang == 'gr' %}
-                                            {{ news_detail.doctor.full_name_gr }}
-                                        {% endif %}
-                                        {% if lang == 'ru' %}
-                                            {{ news_detail.doctor.full_name_ru }}
-                                        {% endif %}
-                                        {% if lang == 'tr' %}
-                                            {{ news_detail.doctor.full_name_tr }}
-                                        {% endif %}
-                                    </h3>
+                                    <img src="https://res.cloudinary.com/dvljbh7jn/image/upload/c_scale,w_80,h_80/v1575654181/{{ news_detail.doctor.image }}.jpg"
+                                         alt="post">
                                 </a>
-                                <a href="{% url 'doctor_info' news_detail.doctor.id news_detail.doctor.full_name_en|replace_empty %}">
-                                    <p>{{ news_detail.doctor.profession_en }}</p>
+                                <div class="media-body">
+                                    <a href="{% url 'doctor_info' news_detail.doctor.id news_detail.doctor.full_name_en|replace_empty %}">
+                                        <h3>
+                                            {% if lang == None or lang == 'en' %}
+                                                {{ news_detail.doctor.full_name_en }}
+                                            {% endif %}
+                                            {% if lang == 'gr' %}
+                                                {{ news_detail.doctor.full_name_gr }}
+                                            {% endif %}
+                                            {% if lang == 'ru' %}
+                                                {{ news_detail.doctor.full_name_ru }}
+                                            {% endif %}
+                                            {% if lang == 'tr' %}
+                                                {{ news_detail.doctor.full_name_tr }}
+                                            {% endif %}
+                                        </h3>
+                                    </a>
+                                    <a href="{% url 'doctor_info' news_detail.doctor.id news_detail.doctor.full_name_en|replace_empty %}">
+                                        <p>{{ news_detail.doctor.profession_en }}</p>
 
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
 
                         <hr>
                         <h3 class="widget_title">Recent Post</h3> {% for instance in news %}
