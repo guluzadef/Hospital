@@ -685,7 +685,6 @@ class EThanksView(View):
         social_media = fetch_social_media()
         menu = fetch_menu()
         submenu = fetch_submenu()
-        images = PageImage.objects.filter(page__name='E-thanks')
 
         title = ''
         text_type = ''
@@ -693,9 +692,12 @@ class EThanksView(View):
         if request.resolver_match.url_name == 'e-thanks':
             title = 'E-Thanks'
             text_type = 'thanks'
+            images = PageImage.objects.filter(page__name='E-thanks')
+
         elif request.resolver_match.url_name == 'e-getwell':
             title = 'E-Getwell'
             text_type = 'getwell'
+            images = PageImage.objects.filter(page__name='E-Getwellz')
 
         context = {
             'title': title,
