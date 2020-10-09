@@ -1301,9 +1301,12 @@ class AdminAddDoctorView(View):
 
     def get(self, request):
         if request.session.get('admin_id') is not None:
+            department = Department.objects.filter(status=1).all()
 
             context = {
-                'title': 'Add Doctor'
+                'title': 'Add Doctor',
+                'department': department
+
             }
 
             return render(request, self.template_name, context)
@@ -1311,11 +1314,13 @@ class AdminAddDoctorView(View):
             return redirect('/')
 
     def post(self, request):
+        department = Department.objects.filter(status=1).all()
 
         try:
             if request.method == 'POST' and request.session.get('admin_id') is not None:
                 doctor = Doctor()
-
+                department = request.POST.get('department')
+                test = Department.objects.filter(name_en=department).last()
                 doctor.image = request.FILES.get('image')
                 doctor.banner_image = request.FILES.get('banner_image')
                 doctor.full_name_en = request.POST.get('full_name_en')
@@ -1332,12 +1337,14 @@ class AdminAddDoctorView(View):
                 doctor.description_tr = request.POST.get('description_tr')
                 doctor.work_experience = request.POST.get('work_experience')
                 doctor.email = request.POST.get('email')
+                doctor.department = test
 
                 doctor.save()
 
                 context = {
                     'title': 'Add Doctor',
-                    'success_text': 'Doctor added'
+                    'success_text': 'Doctor added',
+                    'department': department
                 }
 
                 return render(request, self.template_name, context)
